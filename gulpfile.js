@@ -11,7 +11,7 @@ gulp.task('flattenBower', function(){
   .pipe(gulp.dest('public/scripts'));
 })
 
-gulp.task('copyPublic',['flattenBower'] function(){
+gulp.task('copyPublic',['flattenBower'], function(){
   gulp.src('server/dist/**/*')
   .pipe(gulp.dest('public/'));
 })
