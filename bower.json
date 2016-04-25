@@ -1,0 +1,22 @@
+{
+  "name": "lift",
+  "description": "A website for weightlifters who want to track their fitness goals",
+  "main": "app.js",
+  "authors": [
+    "Niral Pokal <niralpokal@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/niralpokal/lift",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.5",
+    "angular": "^1.5.5",
+    "jquery": "^2.2.3"
+  }
+}
