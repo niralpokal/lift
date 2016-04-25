@@ -11,27 +11,27 @@ gulp.task('flattenBower', function(){
   .pipe(gulp.dest('public/scripts'));
 })
 
-gulp.task('flattenJs', function(){
+gulp.task('copyPublic',['flattenBower'] function(){
   gulp.src('server/dist/**/*')
   .pipe(gulp.dest('public/'));
 })
 
-gulp.task('copy',['flattenBower', 'flattenJs'] , function(){
+gulp.task('copyMisc',['copyPublic'] , function(){
   return gulp.src([ 'server/css/default.css','server/images/*.png'], {base: '.'})
   .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('copyTest',['copy'],  function(){
+gulp.task('copyTest',['copyMisc'],  function(){
   return gulp.src(['./app.js', 'public/**/*'], {base: '.'})
   .pipe(gulp.dest('server/tests/'));
 });
 
-gulp.task('test', ['copyTest', 'casper'], function(){
+gulp.task('test', ['casper'], function(){
     return gulp.src('./server/tests/app.spec.js').pipe(mocha()).once('end', function(){
       process.exit();
     })
 });
-gulp.task('casper', function(){
+gulp.task('casper', ['copyTest'], function(){
     var port = 8080
     var server = app.listen(port);
     return gulp.src('./server/tests/casper.spec.js').pipe(casperJs());

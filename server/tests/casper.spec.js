@@ -18,7 +18,7 @@ casper.test.begin('Lets test the Login Feature', function(test){
     })
   }).then(function (){
     this.wait(2000, function(){
-    test.assertTextExists('Niral', 'The welcome screen is displayed');
+    test.assertTextExists('Welcom Home', 'The welcome screen is displayed');
     this.click('#logout')
     this.capture('test4.png')
   })
