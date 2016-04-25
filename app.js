@@ -7,7 +7,7 @@ var ObjectID = require('mongodb').ObjectID;
 var url = " mongodb://lift:lift@ds019471.mlab.com:19471/lift"
 var url2 = "mongodb://localhost:27017/lift"
 
-app.use(express.static('./deploy'));
+app.use(express.static('./public/');
 app.use(cookieParser());
 
 function User(user){
