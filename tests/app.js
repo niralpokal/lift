@@ -14,6 +14,7 @@ function User(user){
   this.firstName = user.firstName;
   this.lastName = user.lastName;
   this.username = user.username;
+  this.metric = user.metric;
   this.pass = user.pass;
   this.workoutPlan = 0;
   this.goal = "";

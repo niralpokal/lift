@@ -2,20 +2,38 @@ var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var nodemon = require('gulp-nodemon')
 var casperJs = require('gulp-casperjs')
+var flatten = require('gulp-flatten')
 var app = require('./app.js')
 
-gulp.task('copy', function(){
-  return gulp.src(['./default.js', './index.html', './css/default.css','./images/*.png'], {base: '.'})
+gulp.task('flattenBower', function(){
+  gulp.src('bower_components/**/*.min.js')
+  .pipe(flatten())
+  .pipe(gulp.dest('public/scripts'));
+})
+
+gulp.task('flattenJs', function(){
+  gulp.src('server/dist/**/*')
+  .pipe(gulp.dest('public/'));
+})
+
+gulp.task('copy',['flattenBower', 'flattenJs'] , function(){
+  return gulp.src([ 'server/css/default.css','server/images/*.png'], {base: '.'})
   .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('copyTest', function(){
-  return gulp.src(['./app.js', './public/'], {base: '.'})
-  .pipe(gulp.dest('./tests/'));
+gulp.task('copyTest',['copy'],  function(){
+  return gulp.src(['./app.js', 'public/**/*'], {base: '.'})
+  .pipe(gulp.dest('server/tests/'));
 });
 
 gulp.task('test', ['copyTest'], function(){
-    return gulp.src('./tests/app.spec.js').pipe(mocha()).once('end', function(){
+    return gulp.src('./server/tests/app.spec.js').pipe(mocha()).once('end', function(){
       process.exit();
     })
 });
+
+gulp.task('default', function(){
+  nodemon({
+    script: './app.js'
+  }).on('start', ['copy'])
+})
