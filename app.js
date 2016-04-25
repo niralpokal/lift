@@ -46,6 +46,13 @@ app.post('/login', jsonParser, function(req, res) {
   })
 });
 
+app.delete('/login', function(req, res){
+  res.clearCookie('id');
+  res.clearCookie('user');
+  res.clearCookie('remember')
+  res.sendStatus(200)
+})
+
 app.post('/user', jsonParser, function(req, res) {
   var user = new User(req.body);
   MongoClient.connect(url, function(err, db){
