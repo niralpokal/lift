@@ -26,11 +26,16 @@ gulp.task('copyTest',['copy'],  function(){
   .pipe(gulp.dest('server/tests/'));
 });
 
-gulp.task('test', ['copyTest'], function(){
+gulp.task('test', ['copyTest', 'casper'], function(){
     return gulp.src('./server/tests/app.spec.js').pipe(mocha()).once('end', function(){
       process.exit();
     })
 });
+gulp.task('casper', function(){
+    var port = 8080
+    var server = app.listen(port);
+    return gulp.src('./server/tests/casper.spec.js').pipe(casperJs());
+})
 
 gulp.task('default', function(){
   nodemon({
