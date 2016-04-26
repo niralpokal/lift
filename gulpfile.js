@@ -5,7 +5,11 @@ var casperJs = require('gulp-casperjs')
 var flatten = require('gulp-flatten')
 var app = require('./app.js')
 
-gulp.task('flattenBower', function(){
+gulp.task('copyScripts', function(){
+  gulp.src('scripts/*.js').pipe(gulp.dest('public/scripts'))
+})
+
+gulp.task('flattenBower',['copyScripts'], function(){
   gulp.src('bower_components/**/*.min.js')
   .pipe(flatten())
   .pipe(gulp.dest('public/scripts'));
@@ -32,7 +36,7 @@ gulp.task('test', ['casper'], function(){
     })
 });
 gulp.task('casper', ['copyTest'], function(){
-    var port = 8080
+    var port =8080;
     var server = app.listen(port);
     return gulp.src('./server/tests/casper.spec.js').pipe(casperJs());
 })
@@ -40,5 +44,5 @@ gulp.task('casper', ['copyTest'], function(){
 gulp.task('default', function(){
   nodemon({
     script: './app.js'
-  }).on('start', ['copy'])
+  }).on('start', ['test'])
 })

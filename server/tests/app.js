@@ -26,6 +26,7 @@ function User(user){
 
 app.post('/login', jsonParser, function(req, res) {
   var user = req.body;
+  console.log(user);
   MongoClient.connect(url, function(err, db){
     if (err){
       res.sendStatus(503);
@@ -65,7 +66,6 @@ app.post('/user', jsonParser, function(req, res) {
           db.close();
         }else{
           db.close();
-          console.log('hi');
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.cookie('id', results.ops[0]._id);
           res.cookie('user', results.ops[0].username);

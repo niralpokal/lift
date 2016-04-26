@@ -1,4 +1,4 @@
-var app = angular.module('lift', ['ngRoute']);
+var app = angular.module('lift', ['ngRoute', 'ui.bootstrap']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
@@ -7,14 +7,29 @@ app.config(['$routeProvider', function($routeProvider){
     controller: "homeController",
     controllerAs: "home"
   })
-  .when("/login/", {
-    templateUrl: "login/login.view.html",
-    controller: "loginController",
-    controllerAs: "login"
-  })
-  .when("/signup/", {
-    templateUrl: "signup/signup.view.html",
-    controller: "signupController",
-    controllerAs: "signup"
-  })
 }]);
+
+app.controller('loginService', loginService);
+
+app.$inject = ['$scope', '$uibModal'];
+
+function loginService($scope, $uibModal) {
+  $scope.animationsEnabled = true;
+  $scope.open = function (type) {
+    if(type == 'login'){
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: '/login/login.modal.html',
+        controller: 'loginController',
+        controllerAs: 'login'
+      });
+    } else if (type == 'signup'){
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: '/signup/signup.modal.html',
+        controller: 'signupController',
+        controllerAs: 'signup'
+      });
+    }
+  };
+}
