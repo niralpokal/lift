@@ -14,7 +14,7 @@ function home($http, userService, $location, $route){
   vm.logout = function(info, path){
     var update = $http.delete('http://localhost:8080/login')
     update.then(function(data){
-      $location.path('/login')
+      $location.path('')
       $route.reload();
     })
   }
