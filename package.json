@@ -1,0 +1,39 @@
+{
+  "name": "lift",
+  "version": "1.0.0",
+  "description": "A website for weightlifters who want to track their fitness goals",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niralpokal/lift.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niralpokal/lift/issues"
+  },
+  "homepage": "https://github.com/niralpokal/lift#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "casperjs": "^1.1.1",
+    "chai": "^3.5.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "mongodb": "^2.1.16",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "gulp-casperjs": "0.0.5",
+    "gulp-flatten": "^0.2.0",
+    "gulp-minify": "0.0.10",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6"
+  }
+}
