@@ -26,6 +26,7 @@ function User(user){
 
 app.post('/login', jsonParser, function(req, res) {
   var user = req.body;
+  console.log(user);
   MongoClient.connect(url, function(err, db){
     if (err){
       res.sendStatus(503);
