@@ -27,13 +27,16 @@ function CreateUser(user){
 function CreatePlan(plan){
   this.planName = plan.name;
   this.creator = plan.user;
-  this.firstDay = new PlanTemplate(plan.day1);
-  this.secondDay = new PlanTemplate(plan.day2);
-  this.thirdDay = new PlanTemplate(plan.day3);
-  this.fourthDay = new PlanTemplate(plan.day4);
-  this.fifthDay = new PlanTemplate(plan.day5);
-  this.sixthDay = new PlanTemplate(plan.day6);
-  this.seventhDay = new PlanTemplate(plan.day7);
+  this.length = plan.length;
+  this.week = {
+    firstDay: new PlanTemplate(plan.day1),
+    secondDay: new PlanTemplate(plan.day2),
+    thirdDay: new PlanTemplate(plan.day3),
+    fourthDay: new PlanTemplate(plan.day4),
+    fifthDay: new PlanTemplate(plan.day5),
+    sixthDay: new PlanTemplate(plan.day6),
+    seventhDay: new PlanTemplate(plan.day7),
+  }
   this.users = plan.users;
 }
 

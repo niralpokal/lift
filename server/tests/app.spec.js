@@ -72,7 +72,7 @@ describe('Lets test login routes', function(){
     request({
       method: 'POST',
       url:'http://localhost:'+ port+ '/plan',
-      json: {name: 'testPlan', day1:{
+      json: {name: 'testPlan', length:12, day1:{
         rest: false,
         exercises:{
           id:"",
