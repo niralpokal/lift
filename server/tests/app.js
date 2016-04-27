@@ -16,7 +16,7 @@ function CreateUser(user){
   this.username = user.username;
   this.metric = user.metric;
   this.pass = user.pass;
-  this.workoutPlan = 0;
+  this.workoutPlan = [];
   this.goal = "";
   this.weight = user.weight;
   this.height = user.height;
@@ -34,6 +34,7 @@ function CreatePlan(plan){
   this.fifthDay = new PlanTemplate(plan.day5);
   this.sixthDay = new PlanTemplate(plan.day6);
   this.seventhDay = new PlanTemplate(plan.day7);
+  this.users = plan.users;
 }
 
 function PlanTemplate(template){
@@ -46,7 +47,6 @@ function PlanTemplate(template){
 
 app.post('/login', jsonParser, function(req, res) {
   var user = req.body;
-  console.log(user);
   MongoClient.connect(url, function(err, db){
     if (err){
       res.sendStatus(503);
@@ -117,6 +117,29 @@ app.get('/user', function(req, res) {
   })
 });
 
+app.put('/user', jsonParser, function(req,res){
+  var id = {
+    _id:ObjectID(req.cookies.id)
+  }
+  var user = req.body;
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503)
+    }else{
+      db.collection('users').update(id, {$set:user},function(err, results){
+        if(err){
+          res.sendStatus(404);
+          db.close();
+        }else{
+          console.log(results);
+          db.close();
+          res.sendStatus(200);
+        }
+      })
+    }
+  })
+})
+
 app.delete('/user', function(req,res){
   var user = {
     _id:ObjectID(req.cookies.id)
@@ -156,6 +179,29 @@ app.post('/plan', jsonParser, function(req, res) {
           db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.sendStatus(200)
+        }
+      })
+    }
+  })
+});
+
+app.get('/plan', function(req, res) {
+  var plan = {
+    users:{
+      id:req.cookies.id
+    }
+  }
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503);
+    }else {
+      db.collection('plans').find(plan).toArray(function(err, docs){
+        if (err){
+          res.sendStatus(404);
+          db.close();
+        }else{
+          db.close();
+          res.send(docs[0]);
         }
       })
     }

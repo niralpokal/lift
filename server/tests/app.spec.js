@@ -6,6 +6,8 @@ var RANDOMIZE = 0;
 var server = app.listen(RANDOMIZE);
 var port = server.address().port;
 var request = request.defaults({jar:true});
+var id ='';
+var plan = {};
 
 describe('Lets test login routes', function(){
   it('I am making a new user', function(done){
@@ -23,13 +25,15 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am geting the user info', function(done){
-    this.timeout(5000)
+    this.timeout(7000)
     request({
       method: 'GET',
       url: 'http://localhost:'+ port+ '/user'
     },function(err, response, body){
       if(!err && response.statusCode==200){
         assert.isAtLeast(body.length, 1, 'we found something');
+        var x = JSON.parse(body)
+        id = x._id
         done();
       }else if(err){
         throw(err);
@@ -57,7 +61,6 @@ describe('Lets test login routes', function(){
       json: {username: 'tom', pass:'tom'}
     }, function(err, response, body){
       if(!err && response.statusCode==200){
-        assert.isAtLeast(body.length, 1, 'we found something');
         done();
       }else if(err){
         throw(err);
@@ -132,8 +135,40 @@ describe('Lets test login routes', function(){
           weight:0,
           totalWeight:0
         }
+      },
+      users:{
+        id:id
       }
     }
+    },function(err, response, body){
+      if(!err && response.statusCode==200){
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
+  it('i am geting a plan', function(done){
+    this.timeout(5000)
+    request({
+      method: 'GET',
+      url: 'http://localhost:'+ port+ '/plan'
+    },function(err, response, body){
+      if(!err && response.statusCode==200){
+        assert.isAtLeast(body.length, 1, 'we found something');
+        plan = JSON.parse(body);
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
+  it('I am updating the user', function(done){
+    this.timeout(5000)
+    request({
+      method: 'PUT',
+      url: 'http://localhost:'+ port+ '/user',
+      json: {workoutPlan: plan}
     },function(err, response, body){
       if(!err && response.statusCode==200){
         done();
