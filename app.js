@@ -27,13 +27,13 @@ function CreateUser(user){
 function CreatePlan(plan){
   this.planName = plan.name;
   this.creator = plan.user;
-  this.firstDay = new PlanTemplate(plan.template);
-  this.secondDay = new PlanTemplate(plan.template);
-  this.thirdDay = new PlanTemplate(plan.template);
-  this.fourthDay = new PlanTemplate(plan.template);
-  this.fifthDay = new PlanTemplate(plan.template);
-  this.sixthDay = new PlanTemplate(plan.template);
-  this.seventhDay = new PlanTemplate(plan.template);
+  this.firstDay = new PlanTemplate(plan.day1);
+  this.secondDay = new PlanTemplate(plan.day2);
+  this.thirdDay = new PlanTemplate(plan.day3);
+  this.fourthDay = new PlanTemplate(plan.day4);
+  this.fifthDay = new PlanTemplate(plan.day5);
+  this.sixthDay = new PlanTemplate(plan.day6);
+  this.seventhDay = new PlanTemplate(plan.day7);
 }
 
 function PlanTemplate(template){
@@ -46,7 +46,6 @@ function PlanTemplate(template){
 
 app.post('/login', jsonParser, function(req, res) {
   var user = req.body;
-  console.log(user);
   MongoClient.connect(url, function(err, db){
     if (err){
       res.sendStatus(503);
@@ -141,7 +140,45 @@ app.delete('/user', function(req,res){
   })
 });
 
+app.post('/plan', jsonParser, function(req, res) {
+  req.body.user = ObjectID(req.cookies.id);
+  var plan = new CreatePlan(req.body)
+  MongoClient.connect(url, function(err,db){
+    if(err){
+      res.sendStatus(503);
+    }else {
+      db.collection('plans').insert([plan], function(err, results){
+        if(err){
+          res.sendStatus(404)
+          db.close();
+        }else{
+          db.close();
+          res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
+          res.sendStatus(200)
+        }
+      })
+    }
+  })
+});
 
+app.delete('/plan', jsonParser, function(req, res) {
+  var plan = req.body;
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503);
+    }else{
+      db.collection('plans').remove(plan, function(err, results){
+        if(err){
+          res.sendStatus(404)
+          db.close();
+        }else{
+          db.close();
+          res.sendStatus(200)
+        }
+      })
+    }
+  })
+});
 
 if(!require.main.loaded){
   var server = app.listen(8080)

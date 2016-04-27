@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Lift</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link type="text/css" href="css/default.css" rel="stylesheet">
-  </head>
-  <body>
-    <div ng-app="lift">
-      <div ng-controller="loginService">
-        <div ng-show="!start" class="row-fluid" id="header">
-          <nav class="navbar navbar-default navbar-static-top" id="navbar">
-            <div class="row-fluid pull-right">
-              <button type="button" class="btn btn-lg navbar-btn btn-primary" ng-click="open('login')" id="login">Log in!</button>
-              <button type="button" class="btn btn-lg navbar-btn btn-primary" ng-click="open('signup')"id="signup">Sign up!</button>
-            </div>
-            <div class="jumbotron">
-              <div class="container">
-                <h1>Hello</h1>
-                <p>Welcome to Lift<p>
+<head>
+  <meta charset="utf-8">
+  <title>Lift</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link type="text/css" href="css/default.css" rel="stylesheet">
+</head>
+<body>
+  <div ng-app="lift">
+    <div ng-controller="loginService">
+      <div ng-show="!start" class="row-fluid" id="header">
+        <nav class="navbar navbar-default navbar-static-top" id="navbar">
+          <div class="row-fluid pull-right">
+            <button type="button" class="btn btn-lg navbar-btn btn-primary" ng-click="open('login')" id="login">Log in!</button>
+            <button type="button" class="btn btn-lg navbar-btn btn-primary" ng-click="open('signup')"id="signup">Sign up!</button>
+          </div>
+          <div class="jumbotron">
+            <div class="container">
+              <h1>Hello</h1>
+              <p>Welcome to Lift<p>
               </div>
             </div>
           </nav>
         </div>
       </div>
-        <div class="row-fluid well" ng-view></div>
-      </div>
+      <div class="row-fluid well" ng-view></div>
     </div>
-  </div>
   </body>
   <script src="scripts/angular.min.js"></script>
   <script src="scripts/angular-route.min.js"></script>
@@ -42,4 +40,4 @@
   <script src="home/home.controller.js"></script>
   <script src="home/nav.controller.js"></script>
   <script src="home/logout.directive.js"></script>
-</html>
+  </html>

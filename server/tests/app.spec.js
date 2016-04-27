@@ -64,6 +64,98 @@ describe('Lets test login routes', function(){
       }
     })
   })
+  it('I am creating a new workout plan', function(done){
+    this.timeout(7000)
+    request({
+      method: 'POST',
+      url:'http://localhost:'+ port+ '/plan',
+      json: {name: 'testPlan', day1:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day2:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day3:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day4:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day5:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day6:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      },day7:{
+        rest: false,
+        exercises:{
+          id:"",
+          sets:0,
+          reps:0,
+          weight:0,
+          totalWeight:0
+        }
+      }
+    }
+    },function(err, response, body){
+      if(!err && response.statusCode==200){
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
+  it('I am deleting the plan', function(done){
+    this.timeout(5000)
+    request({
+      method: 'DELETE',
+      url: 'http://localhost:' + port+ '/plan',
+      json:{planName:'testPlan'}
+    }, function(err, response, body){
+      if(!err && response.statusCode==200){
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
   it('I am deleting the user', function(done){
     this.timeout(5000)
     request({

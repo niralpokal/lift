@@ -9,7 +9,7 @@
      </button>
      <a class="navbar-brand" href="#/home/">Lift</a>
    </div>
-   <div class="collapse navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">
+   <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">
      <ul class="nav navbar-nav">
        <li ng-class="getClass('/home/')"><a href="#/home/">Home</a></li>
        <!-- Add the other links here-->
@@ -22,4 +22,6 @@
 </nav>
 <div>
   {{home.welcomemessage}} {{home.user}}
+
+  <plan></plan>
 </div>
