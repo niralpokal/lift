@@ -226,6 +226,28 @@ app.delete('/plan', jsonParser, function(req, res) {
   })
 });
 
+app.get('/exercise/:id/', function(req, res) {
+  var x = req.params.id
+  var exercise = {
+    id:new RegExp(''+x+'', 'i')
+  }
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503);
+    }else{
+      db.collection('workouts').find(exercise).toArray(function(err, docs){
+        if(err){
+          res.sendStatus(404);
+          db.close();
+        }else{
+          db.close();
+          res.send(docs);
+        }
+      })
+    }
+  })
+});
+
 if(!require.main.loaded){
   var server = app.listen(8080)
 }

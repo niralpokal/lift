@@ -177,6 +177,20 @@ describe('Lets test login routes', function(){
       }
     })
   })
+  it('I am getting an exercise', function(done){
+    this.timeout(7000)
+    request({
+      method: 'GET',
+      url: 'http://localhost:'+ port+ '/exercise/deadlift',
+    },function(err, response, body){
+      if(!err && response.statusCode==200){
+        assert.isAtLeast(body.length, 1, 'we found something');
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
   it('I am deleting the plan', function(done){
     this.timeout(5000)
     request({
