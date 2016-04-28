@@ -13,13 +13,16 @@ app.run(['$rootScope', '$location', '$cookies', '$window', function($rootScope, 
   var id =  $cookies.get('id')
   var remember = $cookies.get('remember')
   if (remember == 'true' && id != undefined){
+    document.getElementById('header').className="hidden row-fluid"
     $location.path('/home/')
   }
-  //make a not authorized path
   $rootScope.$on('$locationChangeStart', function(event, next, current){
     var cookieId =  $cookies.get('id')
+    var remember = $cookies.get('remember')
     var notAuthorized = $.inArray($location.path(), [' ']) === -1;
-    if(cookieId == undefined && notAuthorized){
+    if(cookieId == undefined&& notAuthorized){
+      $location.path('')
+    }else if(remember == undefined&& notAuthorized){
       $location.path('')
     }
   })
