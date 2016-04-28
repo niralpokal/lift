@@ -1,6 +1,6 @@
 var app = angular.module('lift')
 
-app.directive('planLength', planLength);
+app.directive('planlength', planLength);
 
 function planLength(){
   return {
