@@ -8,8 +8,13 @@ function home($http, userService, $location, $route, $window){
   var currentUser = userService.getUser();
   currentUser.then(function(info){
     vm.welcomemessage = "Welcome Home, "
-    vm.user = info.data.firstName
+    vm.user = info.data
   })
+
+  vm.createPlan = function(){
+    //document.getElementById('userPlan').className ="hidden"
+    document.getElementById('planMaker').className ="row"
+  }
 
   vm.logout = function(info, path){
     var update = $http.delete('http://localhost:8080/login')
