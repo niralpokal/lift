@@ -44,5 +44,5 @@ gulp.task('casper', ['copyTest'], function(){
 gulp.task('default', function(){
   nodemon({
     script: './app.js'
-  }).on('start', ['test'])
+  }).on('start', ['copyTest'])
 })

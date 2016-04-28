@@ -9,12 +9,18 @@ app.config(['$routeProvider', function($routeProvider){
   })
 }]);
 
-app.run(['$rootScope', '$location', '$cookies', '$http', function($rootScope, $location, $cookies, $http){
+app.run(['$rootScope', '$location', '$cookies', '$window', function($rootScope, $location, $cookies, $window){
   var id =  $cookies.get('id')
   var remember = $cookies.get('remember')
-  console.log(remember);
   if (remember == 'true' && id != undefined){
-    console.log('hi');
     $location.path('/home/')
   }
+  //make a not authorized path
+  $rootScope.$on('$locationChangeStart', function(event, next, current){
+    var cookieId =  $cookies.get('id')
+    var notAuthorized = $.inArray($location.path(), [' ']) === -1;
+    if(cookieId == undefined && notAuthorized){
+      $location.path('')
+    }
+  })
 }])
