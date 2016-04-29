@@ -65,6 +65,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
   vm.length= function(){
     var i = vm.plan.planName();
     vm.plan.planName = i;
+    $scope.$broadcast('planName', vm.plan.planName)
     document.getElementById('planNameForm').className = "hidden panel panel-default";
     document.getElementById('planLengthForm').className = "panel panel-default";
   }

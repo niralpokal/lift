@@ -65,12 +65,14 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
   vm.length= function(){
     var i = vm.plan.planName();
     vm.plan.planName = i;
+    $scope.$broadcast('planName', vm.plan.planName)
     document.getElementById('planNameForm').className = "hidden panel panel-default";
     document.getElementById('planLengthForm').className = "panel panel-default";
   }
   vm.day1 = function(){
     var i = vm.plan.planLength();
     vm.plan.planLength = i;
+    $scope.$broadcast('planLength', vm.plan.planLength)
     document.getElementById('planLengthForm').className = "hidden panel panel-default";
     document.getElementById('planDay1Form').className = "panel panel-default";
   }
