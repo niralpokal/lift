@@ -1,4 +1,4 @@
-var app = angular.module('lift', ['ngRoute', 'ui.bootstrap']);
+var app = angular.module('lift', ['ngRoute', 'ui.bootstrap', 'ngCookies']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
@@ -9,27 +9,21 @@ app.config(['$routeProvider', function($routeProvider){
   })
 }]);
 
-app.controller('loginService', loginService);
-
-app.$inject = ['$scope', '$uibModal'];
-
-function loginService($scope, $uibModal) {
-  $scope.animationsEnabled = true;
-  $scope.open = function (type) {
-    if(type == 'login'){
-      var modalInstance = $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: '/login/login.modal.html',
-        controller: 'loginController',
-        controllerAs: 'login'
-      });
-    } else if (type == 'signup'){
-      var modalInstance = $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: '/signup/signup.modal.html',
-        controller: 'signupController',
-        controllerAs: 'signup'
-      });
+app.run(['$rootScope', '$location', '$cookies', '$window', function($rootScope, $location, $cookies, $window){
+  var id =  $cookies.get('id')
+  var remember = $cookies.get('remember')
+  if (remember == 'true' && id != undefined){
+    document.getElementById('header').className="hidden row-fluid"
+    $location.path('/home/')
+  }
+  $rootScope.$on('$locationChangeStart', function(event, next, current){
+    var cookieId =  $cookies.get('id')
+    var remember = $cookies.get('remember')
+    var notAuthorized = $.inArray($location.path(), [' ']) === -1;
+    if(cookieId == undefined&& notAuthorized){
+      $location.path('')
+    }else if(remember == undefined&& notAuthorized){
+      $location.path('')
     }
-  };
-}
+  })
+}])

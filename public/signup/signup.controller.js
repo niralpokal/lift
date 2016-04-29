@@ -9,9 +9,9 @@ function signup($http, $location, $scope, $uibModalInstance){
   }
   vm.signup = function(info, path){
     $uibModalInstance.close();
+    document.getElementById('header').className="hidden row-fluid"
    var update = $http.post('http://localhost:8080/user',info)
    update.then(function(){
-     document.getElementById('header').className="hidden row-fluid"
      $scope.go(path)
    })
  }

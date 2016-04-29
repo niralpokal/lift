@@ -1,0 +1,28 @@
+<div id="planDay1Form" class="hidden panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">What do you want to do on the first day?</h3>
+  </div>
+  <div data-id="planMaker.day2()" class="panel-body">
+    <form id="day1Form">
+      <button type="button" class="btn btn-primary" name="restButton" ng-click="planMaker.plan.day1.rest = true; planMaker.day2()">Rest Day</button>
+      <button type="button" class="btn btn-primary" name="workoutButton" ng-click="planMaker.day1.prototype.showWorkout()">Workout Day</button>
+    </form>
+    <form id="day1WorkoutForm" class="hidden">
+      <div class="form-group">
+        <label for="workoutName">Workout Name:</label>
+        <input type="text" ng-model="match.asyncSelected" placeholder="search exercises" uib-typeahead="exercises for exercises in planMaker.getExercise($viewValue)" typeahead-loading="loadingExercises" typeahead-no-results="noResults" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="workoutName">Sets</label>
+        <input type="text" name="name" ng-model="match.sets"value="">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="workoutName">Reps</label>
+        <input type="text" name="name" ng-model="match.reps" value="">
+      </div>
+      <button type="button" class="btn  btn-sm btn-primary" name="addAnotherExercise" ng-click="planMaker.day1.prototype.selectMatch(match.asyncSelected, match.sets, match.reps); match.asyncSelected = ''; match.sets=''; match.reps ='';">Add Workout</button>
+      <hr>
+      <button id="planDay1FormBtn" type="button" class="btn btn-primary" ng-click="planMaker.day2()" name="planDay1FormBtn">Continue to Next Day</button>
+    </form>
+  </div>
+</div>
