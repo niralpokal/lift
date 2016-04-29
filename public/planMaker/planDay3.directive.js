@@ -1,6 +1,6 @@
 var app = angular.module('lift')
 
-app.directive('planDay3', planDay3);
+app.directive('planday3', planDay3);
 
 function planDay3(){
   return {

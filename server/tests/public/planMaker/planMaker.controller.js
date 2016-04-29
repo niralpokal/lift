@@ -1,17 +1,12 @@
 app.controller('planMakerController', planMaker);
 
-app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService'];
+app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', '$timeout'];
 
-function planMaker($http, $location, $scope, userService, exerciseService){
+function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, $timeout){
   var vm = this;
   var _planName;
   var _planLength = 12;
   var currentUser = userService.getUser();
-  var match  ={
-    asyncSelected:'',
-    sets:'',
-    reps:''
-  }
   currentUser.then(function(info){
     vm.welcomemessage = "Welcome Home, "
     vm.user = info.data
@@ -61,10 +56,14 @@ function planMaker($http, $location, $scope, userService, exerciseService){
   })
 }
   vm.length= function(){
+    var i = vm.plan.planName();
+    vm.plan.planName = i;
     document.getElementById('planNameForm').className = "hidden panel panel-default";
     document.getElementById('planLengthForm').className = "panel panel-default";
   }
   vm.day1 = function(){
+    var i = vm.plan.planLength();
+    vm.plan.planLength = i;
     document.getElementById('planLengthForm').className = "hidden panel panel-default";
     document.getElementById('planDay1Form').className = "panel panel-default";
   }
@@ -262,10 +261,27 @@ function planMaker($http, $location, $scope, userService, exerciseService){
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
           vm.plan.day7.exercises.push(exercise);
-          console.log(vm.plan);
           }
         }
       })
     }
   }
+  $scope.animationsEnabled = true;
+
+  $timeout($scope.open = function (type) {
+    if(type == 'reviewPlan'){
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: '/planMaker/reviewPlan.modal.html',
+        controller: 'reviewPlanController',
+        controllerAs: 'review',
+        size:'lg',
+        resolve: {
+          planMaker: function(){
+            return vm.plan
+          }
+        }
+      });
+    }
+  },1000)
 }
