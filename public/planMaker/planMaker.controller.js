@@ -1,8 +1,8 @@
 app.controller('planMakerController', planMaker);
 
-app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', '$timeout'];
+app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', '$timeout', 'planService'];
 
-function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, $timeout){
+function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, $timeout, planService){
   var vm = this;
   var _planName;
   var _planLength = 12;
@@ -86,9 +86,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day1.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day1.exercises.push(exercise);
       })
     }
   }
@@ -115,9 +118,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day2.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day2.exercises.push(exercise);
       })
     }
   }
@@ -144,9 +150,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day3.exercises.push(exercise);
+          break;
+          }else {
+          exercise.exerciseId = false;
           }
         }
+        vm.plan.day3.exercises.push(exercise);
       })
     }
   }
@@ -173,9 +182,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day4.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day4.exercises.push(exercise);
       })
     }
   }
@@ -202,9 +214,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day5.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day5.exercises.push(exercise);
       })
     }
   }
@@ -228,12 +243,15 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
       }
       var id = exerciseService.getExercise(val)
       id.then(function(response){
-        for (var i = 0; i < response.data.length; i++) {
+      for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day6.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day6.exercises.push(exercise);
       })
     }
   }
@@ -260,9 +278,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
-          vm.plan.day7.exercises.push(exercise);
+          break;
+          }else {
+            exercise.exerciseId = false;
           }
         }
+        vm.plan.day7.exercises.push(exercise);
       })
     }
   }
@@ -282,6 +303,14 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
       });
+    modalInstance.result.then(function (plan) {
+     if(plan == 'ok'){
+       var send = planService.createPlan(vm.plan)
+       send.then(function(response){
+         
+        })
+      }
+      })
     }
   },1000)
 }
