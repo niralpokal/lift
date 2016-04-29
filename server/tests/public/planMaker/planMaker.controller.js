@@ -232,6 +232,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
         if (response.data[i].id == val){
           exercise.exerciseId = response.data[i]._id;
           vm.plan.day6.exercises.push(exercise);
+          console.log(vm.plan.day6.exercises);
           }
         }
       })

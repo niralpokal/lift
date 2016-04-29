@@ -1,101 +1,124 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h3 class="modal-title">Review Your Plan!</h3>
+    <h3 class="modal-title text-center">Review Your Plan!</h3>
   </div>
   <div class="modal-body">
     <div id="reviewPlan" class="row text-center">
       <h3 class="text-center">{{planMaker.planName}}</h3>
-      <h4 class="text-center"><small>{{planMaker.planLength()}} weeks long</small></h4>
-      <div class="col-md-1" ng-if="planMaker.day1.rest == true">
-        <p>Day 1</p>
+      <h4 class="text-center"><small>{{planMaker.planLength}} weeks long</small></h4>
+      <div class="col-md-3 border" ng-if="planMaker.day1.rest == true">
+        <h5>Day 1</h5>
+        <hr>
         <p>Rest Day</p>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day1.rest == false">
-        <p>Day 1</p>
+      <div class="col-md-3 border" ng-if="planMaker.day1.rest == false">
+        <h5>Day 1</h5>
+          <hr>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="exercise in planMaker.day1.exercises">
             {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
+            <br>
+            Sets:{{exercise.sets}} Reps:{{exercise.reps}}
           </li>
         </ul>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day2.rest == true">
-        <p>Day 2</p>
+      <div class="col-md-3 border" ng-if="planMaker.day2.rest == true">
+        <h5>Day 2</h5>
+          <hr>
         <p>Rest Day</p>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day2.rest == false">
-        <p>Day 2</p>
+      <div class="col-md-3 border" ng-if="planMaker.day2.rest == false">
+        <h5>Day 2</h5>
+          <hr>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="exercise in planMaker.day2.exercises">
             {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
+            <br>
+            Sets:{{exercise.sets}} Reps:{{exercise.reps}}
           </li>
         </ul>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day3.rest == true">
-        <p>Day 3</p>
+      <div class="col-md-3 border" ng-if="planMaker.day3.rest == true">
+        <h5>Day 3</h5>
+          <hr>
         <p>Rest Day</p>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day3.rest == false">
-        <p>Day 3</p>
+      <div class="col-md-3 border" ng-if="planMaker.day3.rest == false">
+        <h5>Day 3</h5>
+          <hr>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="exercise in planMaker.day3.exercises">
             {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
+            <br>
+            Sets:{{exercise.sets}} Reps:{{exercise.reps}}
           </li>
         </ul>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day4.rest == true">
-        <p>Day 4</p>
+      <div class="col-md-3 border" ng-if="planMaker.day4.rest == true">
+        <h5>Day 4</h5>
+          <hr>
         <p>Rest Day</p>
       </div>
-      <div class="col-md-4" ng-if="planMaker.day4.rest == false">
-        <p>Day 4</p>
+      <div class="col-md-3 border" ng-if="planMaker.day4.rest == false">
+        <h5>Day 4</h5>
+          <hr>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="exercise in planMaker.day4.exercises">
             {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
+            <br>
+            Sets::{{exercise.sets}} Reps:{{exercise.reps}}
           </li>
         </ul>
       </div>
-      <div class="col-md-1" ng-if="planMaker.day5.rest == true">
-        <p>Day 5</p>
-        <p>Rest Day</p>
-      </div>
-      <div class="col-md-1" ng-if="planMaker.day5.rest == false">
-        <p>Day 5</p>
-        <ul class="list-group">
-          <li class="list-group-item" ng-repeat="exercise in planMaker.day5.exercises">
-            {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-1" ng-if="planMaker.day6.rest == true">
-        <p>Day 6</p>
-        <p>Rest Day</p>
-      </div>
-      <div class="col-md-1" ng-if="planMaker.day6.rest == false">
-        <p>Day 6</p>
-        <ul class="list-group">
-          <li class="list-group-item" ng-repeat="exercise in planMaker.day6exercises">
-            {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-1" ng-if="planMaker.day7.rest == true">
-        <p>Day 7</p>
-        <p>Rest Day</p>
-      </div>
-      <div class="col-md-1" ng-if="planMaker.day7.rest == false">
-        <p>Day 7</p>
-        <ul class="list-group">
-          <li class="list-group-item" ng-repeat="exercise in planMaker.day7.exercises">
-            {{exercise.name}}
-            sets:{{exercise.sets}} reps:{{exercise.reps}}
-          </li>
-        </ul>
+      <div class="row">
+        <div class="col-md-4 border" ng-if="planMaker.day5.rest == true">
+          <h5>Day 5</h5>
+            <hr>
+          <p>Rest Day</p>
+        </div>
+        <div class="col-md-4 border" ng-if="planMaker.day5.rest == false">
+          <h5>Day 5</h5>
+            <hr>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="exercise in planMaker.day5.exercises">
+              {{exercise.name}}
+              <br>
+              Sets:{{exercise.sets}} Reps:{{exercise.reps}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 border" ng-if="planMaker.day6.rest == true">
+          <h5>Day 6</h5>
+            <hr>
+          <p>Rest Day</p>
+        </div>
+        <div class="col-md-4 border" ng-if="planMaker.day6.rest == false">
+          <h5>Day 6</h5>
+            <hr>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="exercise in planMaker.day6.exercises">
+              {{exercise.name}}
+              <br>
+              Sets:{{exercise.sets}} Reps:{{exercise.reps}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 border" ng-if="planMaker.day7.rest == true">
+          <h5>Day 7</h5>
+            <hr>
+          <p>Rest Day</p>
+        </div>
+        <div class="col-md-4 border" ng-if="planMaker.day7.rest == false">
+          <h5>Day 7</h5>
+            <hr>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="exercise in planMaker.day7.exercises">
+              <b>{{exercise.name}}</b>
+              <br>
+              Sets:{{exercise.sets}} Reps:{{exercise.reps}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
