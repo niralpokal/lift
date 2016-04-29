@@ -234,7 +234,7 @@ app.get('/exercise/:id/', function(req, res) {
   var exercise = {
     id:new RegExp(''+x+'', 'i')
   }
-  MongoClient.connect(url2, function(err, db){
+  MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
     }else{

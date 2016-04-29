@@ -4,7 +4,7 @@
   </div>
   <div  class="panel-body">
     <form id="day7Form">
-      <button type="button" class="btn btn-primary" name="restButton" ng-click="planMaker.plan.day7.rest = true">Rest Day</button>
+      <button type="button" class="btn btn-primary" name="restButton" ng-click="planMaker.plan.day7.rest = true; open('reviewPlan')">Rest Day</button>
       <button type="button" class="btn btn-primary" name="workoutButton" ng-click="planMaker.day7.prototype.showWorkout()">Workout Day</button>
     </form>
     <form id="day7WorkoutForm" class="hidden">
@@ -20,7 +20,7 @@
         <label for="workoutName">Reps</label>
         <input type="text" name="name" ng-model="match.reps" value="">
       </div>
-      <button type="button" class="btn  btn-sm btn-primary" name="addAnotherExercise" ng-click="planMaker.day7.prototype.selectMatch(match.asyncSelected, match.sets, match.reps); match.asyncSelected = ''; match.sets=''; match.reps ='';">Add Another Workout</button>
+      <button type="button" class="btn  btn-sm btn-primary" name="addAnotherExercise" ng-click="planMaker.day7.prototype.selectMatch(match.asyncSelected, match.sets, match.reps); match.asyncSelected = ''; match.sets=''; match.reps ='';">Add Workout</button>
       <hr>
       <button id="planDay7FormBtn" type="button" class="btn btn-primary" ng-click="open('reviewPlan')" name="planDay7FormBtn">Review Plan</button>
     </form>
