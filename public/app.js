@@ -1,4 +1,4 @@
-var app = angular.module('lift', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ngDragDrop']);
+var app = angular.module('lift', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ngDragDrop', 'xeditable']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
@@ -9,7 +9,8 @@ app.config(['$routeProvider', function($routeProvider){
   })
 }]);
 
-app.run(['$rootScope', '$location', '$cookies', '$window', function($rootScope, $location, $cookies, $window){
+app.run(['$rootScope', '$location', '$cookies', '$window', 'editableOptions', function($rootScope, $location, $cookies, $window, editableOptions){
+  editableOptions.theme = 'bs3';
   var id =  $cookies.get('id')
   var remember = $cookies.get('remember')
   if (remember == 'true' && id != undefined){

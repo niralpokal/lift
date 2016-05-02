@@ -8,12 +8,12 @@
         <h3 ng-if="planName">{{planName}}</h3>
         <h4 ng-if="planLength"><small>{{planLength}} weeks long</small></h4>
         <div class="row">
-          <form class="col-md-3" editable-form name="editableForm" onaftersave="saveDay(day1)" ng-if="day1">
+          <form class="col-md-3" editable-form name="editableDay1" onaftersave="saveDay(day1)" ng-if="day1">
             <div class="buttons">
-              <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">Edit</button>
-            <span ng-show="editableForm.$visible">
-            <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">Save</button>
-              <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
+              <button type="button" class="btn btn-default" ng-click="editableDay1.$show()" ng-show="!editableDay1.$visible">Edit</button>
+            <span ng-show="editableDay1.$visible">
+            <button type="submit" class="btn btn-primary" ng-disabled="editableDay1.$waiting">Save</button>
+              <button type="button" class="btn btn-default" ng-disabled="editableDay1.$waiting" ng-click="editableDay1.$cancel()">Cancel</button>
             </span>
             </div>
             <div ng-if="day1.rest == true">
@@ -27,7 +27,7 @@
             <hr>
             <ul class="list-group">
               <li class="list-group-item" ng-repeat="exercise in day1.exercises">
-                <p><b><span editable-text="exercise.name"  e-uib-typeahead="exercises for exercises in planMaker.getExercise($viewValue) | limitTo:8"  typeahead-on-select="getExerciseId($item, exercise)">{{exercise.name}}</span></b></p>
+                <p><b><span editable-text="exercise.name"  e-uib-typeahead="exercises for exercises in planMaker.getExercise($viewValue) | limitTo:8"  onbeforesave="getExerciseId($data, exercise)">{{exercise.name}}</span></b></p>
                 <br>
                 <p>Sets: <span class="planText" editable-number="exercise.numOfSets" e-min="0">{{exercise.numOfSets}}</span>
                 Reps: <span class="planText" editable-number="exercise.numOfReps" e-min="0">{{exercise.numOfReps}}</span></p>
@@ -35,39 +35,60 @@
             </ul>
           </div>
         </form>
+        <form class="col-md-3" editable-form name="editableDay2" onaftersave="saveDay(day2)" ng-if="day1">
+          <div class="buttons">
+            <button type="button" class="btn btn-default" ng-click="editableDay2.$show()" ng-show="!editableDay2.$visible">Edit</button>
+          <span ng-show="editableDay2.$visible">
+          <button type="submit" class="btn btn-primary" ng-disabled="editableDay2.$waiting">Save</button>
+            <button type="button" class="btn btn-default" ng-disabled="editableDay2.$waiting" ng-click="editableDay2.$cancel()">Cancel</button>
+          </span>
+          </div>
+          <div ng-if="day2.rest == true">
+          <h4>Day 2 <br><small><span editable-text="day2.name">{{day2.name}}</span></small></h4>
+          <hr>
+          <p>Rest Day: <span editable-checkbox="day2.rest" e-title="Rest Day?">{{day2.rest}}</span></p>
         </div>
-          <div class="col-md-3" ng-if="day2.rest == true">
-            <h4>Day 2 <br><small>{{day2.name}}</small></h4>
-            <hr>
-            <p>Rest Day</p>
-          </div>
-          <div class="col-md-3" ng-if="day2.rest == false">
-            <h4>Day 2 <br><small>{{day2.name}}</small></h4>
-            <hr>
-            <ul class="list-group">
-              <li class="list-group-item" ng-repeat="exercise in day2.exercises">
-                <b>{{exercise.name}}</b>
-                <br>
-                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
-              </li>
+        <div ng-if="day2.rest == false">
+          <h4>Day 2 <br><small><span editable-text="day2.name">{{day2.name}}</span></small></h4>
+          <p>Rest Day: <span class="planText" editable-checkbox="day2.rest" e-title="Rest Day?">{{day2.rest}}</span></p>
+          <hr>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="exercise in day2.exercises">
+              <p><b><span editable-text="exercise.name"  e-uib-typeahead="exercises for exercises in planMaker.getExercise($viewValue) | limitTo:8"  onbeforesave="getExerciseId($data, exercise)">{{exercise.name}}</span></b></p>
+              <br>
+              <p>Sets: <span class="planText" editable-number="exercise.numOfSets" e-min="0">{{exercise.numOfSets}}</span>
+              Reps: <span class="planText" editable-number="exercise.numOfReps" e-min="0">{{exercise.numOfReps}}</span></p>
+            </li>
             </ul>
           </div>
-          <div class="col-md-3" ng-if="day3.rest == true">
-            <h4>Day 3 <br><small>{{day3.name}}</small></h4>
-            <hr>
-            <p>Rest Day</p>
+        </form>
+        <form class="col-md-3" editable-form name="editableDay3" onaftersave="saveDay(day3)" ng-if="day1">
+          <div class="buttons">
+            <button type="button" class="btn btn-default" ng-click="editableDay3.$show()" ng-show="!editableDay3.$visible">Edit</button>
+          <span ng-show="editableDay3.$visible">
+          <button type="submit" class="btn btn-primary" ng-disabled="editableDay3.$waiting">Save</button>
+            <button type="button" class="btn btn-default" ng-disabled="editableDay3.$waiting" ng-click="editableDay3.$cancel()">Cancel</button>
+          </span>
           </div>
-          <div class="col-md-3" ng-if="day3.rest == false">
-            <h4>Day 3 <br><small>{{day3.name}}</small></h4>
-            <hr>
-            <ul class="list-group">
-              <li class="list-group-item" ng-repeat="exercise in day3.exercises">
-                <b>{{exercise.name}}</b>
-                <br>
-                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
-              </li>
+          <div ng-if="day3.rest == true">
+          <h4>Day 3 <br><small><span editable-text="day3.name">{{day3.name}}</span></small></h4>
+          <hr>
+          <p>Rest Day: <span editable-checkbox="day3.rest" e-title="Rest Day?">{{day3.rest}}</span></p>
+        </div>
+        <div ng-if="day3.rest == false">
+          <h4>Day 3 <br><small><span editable-text="day2.name">{{day3.name}}</span></small></h4>
+          <p>Rest Day: <span class="planText" editable-checkbox="day3.rest" e-title="Rest Day?">{{day3.rest}}</span></p>
+          <hr>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="exercise in day3.exercises">
+              <p><b><span editable-text="exercise.name"  e-uib-typeahead="exercises for exercises in planMaker.getExercise($viewValue) | limitTo:8"  onbeforesave="getExerciseId($data, exercise)">{{exercise.name}}</span></b></p>
+              <br>
+              <p>Sets: <span class="planText" editable-number="exercise.numOfSets" e-min="0">{{exercise.numOfSets}}</span>
+              Reps: <span class="planText" editable-number="exercise.numOfReps" e-min="0">{{exercise.numOfReps}}</span></p>
+            </li>
             </ul>
           </div>
+        </form>
           <div class="col-md-3" ng-if="day4.rest == true">
             <h4>Day 4 <br><small>{{day4.name}}</small></h4>
             <hr>

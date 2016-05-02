@@ -20,30 +20,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
       return arguments.length ? (_planLength = newLength) : _planLength;
     },
     day1:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day2:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day3:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day4:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day5:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day6:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day7:{
+      name:'',
       rest:false,
       exercises:[]
     }
@@ -58,25 +65,28 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
   vm.length= function(){
     var i = vm.plan.planName();
     vm.plan.planName = i;
+    $scope.$broadcast('planName', vm.plan.planName)
     document.getElementById('planNameForm').className = "hidden panel panel-default";
     document.getElementById('planLengthForm').className = "panel panel-default";
   }
   vm.day1 = function(){
     var i = vm.plan.planLength();
     vm.plan.planLength = i;
+    $scope.$broadcast('planLength', vm.plan.planLength)
     document.getElementById('planLengthForm').className = "hidden panel panel-default";
     document.getElementById('planDay1Form').className = "panel panel-default";
   }
   vm.day1.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day1.name = name;
       document.getElementById('day1Form').className = "hidden";
       document.getElementById('day1WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -92,23 +102,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day1.exercises.push(exercise);
+        $scope.$broadcast('day1', vm.plan.day1)
       })
     }
   }
   vm.day2= function(){
+    $scope.$broadcast('day1', vm.plan.day1)
     document.getElementById('planDay1Form').className = "hidden panel panel-default";
     document.getElementById('planDay2Form').className = "panel panel-default";
   }
   vm.day2.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day2.name = name;
       document.getElementById('day2Form').className = "hidden";
       document.getElementById('day2WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -124,23 +137,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day2.exercises.push(exercise);
+        $scope.$broadcast('day2', vm.plan.day2)
       })
     }
   }
   vm.day3= function(){
+    $scope.$broadcast('day2', vm.plan.day2)
     document.getElementById('planDay2Form').className = "hidden panel panel-default";
     document.getElementById('planDay3Form').className = "panel panel-default";
   }
   vm.day3.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day3.name = name;
       document.getElementById('day3Form').className = "hidden";
       document.getElementById('day3WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -156,23 +172,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day3.exercises.push(exercise);
+        $scope.$broadcast('day3', vm.plan.day3)
       })
     }
   }
   vm.day4= function(){
+    $scope.$broadcast('day3', vm.plan.day3)
     document.getElementById('planDay3Form').className = "hidden panel panel-default";
     document.getElementById('planDay4Form').className = "panel panel-default";
   }
   vm.day4.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day4.name = name;
       document.getElementById('day4Form').className = "hidden";
       document.getElementById('day4WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -188,23 +207,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day4.exercises.push(exercise);
+        $scope.$broadcast('day4', vm.plan.day4)
       })
     }
   }
   vm.day5 = function(){
+    $scope.$broadcast('day4', vm.plan.day4)
     document.getElementById('planDay4Form').className = "hidden panel panel-default";
     document.getElementById('planDay5Form').className = "panel panel-default";
   }
   vm.day5.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day4.name = name;
       document.getElementById('day5Form').className = "hidden";
       document.getElementById('day5WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -220,23 +242,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day5.exercises.push(exercise);
+        $scope.$broadcast('day5', vm.plan.day5)
       })
     }
   }
   vm.day6= function(){
+    $scope.$broadcast('day5', vm.plan.day5)
     document.getElementById('planDay5Form').className = "hidden panel panel-default";
     document.getElementById('planDay6Form').className = "panel panel-default";
   }
   vm.day6.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day6.name = name;
       document.getElementById('day6Form').className = "hidden";
       document.getElementById('day6WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -252,23 +277,26 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day6.exercises.push(exercise);
+        $scope.$broadcast('day6', vm.plan.day6)
       })
     }
   }
   vm.day7= function(){
+    $scope.$broadcast('day6', vm.plan.day6)
     document.getElementById('planDay6Form').className = "hidden panel panel-default";
     document.getElementById('planDay7Form').className = "panel panel-default";
   }
   vm.day7.prototype ={
-    showWorkout: function(){
+    showWorkout: function(name){
+      vm.plan.day7.name = name;
       document.getElementById('day7Form').className = "hidden";
       document.getElementById('day7WorkoutForm').className = "";
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -284,6 +312,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day7.exercises.push(exercise);
+        $scope.$broadcast('day7', vm.plan.day7)
       })
     }
   }
@@ -307,7 +336,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
      if(plan == 'ok'){
        var send = planService.createPlan(vm.plan)
        send.then(function(response){
-         
+
         })
       }
       })
