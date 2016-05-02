@@ -1,7 +1,7 @@
 <div class="row">
   <div class="panel panel-default" ng-controller="previewController as preview">
     <div class="panel-heading">
-      <h3 class="panel-title text-center">Review Your Plan!</h3>
+      <h3 class="panel-title text-center">Your Current Plan</h3>
     </div>
     <div class="panel-body">
       <div id="reviewPlan" class="row col-md-12 text-center">
@@ -34,6 +34,9 @@
                 </li>
               </ul>
             </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay1.$visible" ng-click="planMaker.day1.prototype.addWorkout()">Add Workout</button>
+            </div>
           </form>
           <form class="col-md-3" editable-form name="editableDay2" onaftersave="saveDay(day2)" ng-if="day2">
             <div class="buttons">
@@ -61,6 +64,9 @@
                 </li>
               </ul>
             </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay2.$visible" ng-click="planMaker.day2.prototype.addWorkout()">Add Workout</button>
+            </div>
           </form>
           <form class="col-md-3" editable-form name="editableDay3" onaftersave="saveDay(day3)" ng-if="day3">
             <div class="buttons">
@@ -87,6 +93,9 @@
                 </li>
               </ul>
             </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay3.$visible" ng-click="planMaker.day3.prototype.addWorkout()">Add Workout</button>
+            </div>
           </form>
           <form class="col-md-3" editable-form name="editableDay4" onaftersave="saveDay(day4)" ng-if="day4">
             <div class="buttons">
@@ -112,6 +121,9 @@
                       Reps: <span class="planText" editable-number="exercise.numOfReps" e-min="0">{{exercise.numOfReps}}</span></p>
                 </li>
               </ul>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay4.$visible" ng-click="planMaker.day4.prototype.addWorkout()">Add Workout</button>
             </div>
           </form>
         </div>
@@ -141,6 +153,9 @@
                 </li>
               </ul>
             </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay5.$visible" ng-click="planMaker.day5.prototype.addWorkout()">Add Workout</button>
+            </div>
           </form>
           <form class="col-md-4" editable-form name="editableDay6" onaftersave="saveDay(day6)" ng-if="day6">
             <div class="buttons">
@@ -167,6 +182,9 @@
                 </li>
               </ul>
             </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay6.$visible" ng-click="planMaker.day6.prototype.addWorkout()">Add Workout</button>
+            </div>
           </form>
           <form class="col-md-4" editable-form name="editableDay7" onaftersave="saveDay(day7)" ng-if="day7">
             <div class="buttons">
@@ -192,6 +210,9 @@
                     Reps: <span class="planText" editable-number="exercise.numOfReps" e-min="0">{{exercise.numOfReps}}</span></p>
                 </li>
               </ul>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay7.$visible" ng-click="planMaker.day7.prototype.addWorkout()">Add Workout</button>
             </div>
           </form>
         </div>
