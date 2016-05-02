@@ -2,8 +2,10 @@ app.controller('previewController', previewController);
 app.$inject = ['$scope', 'exerciseService']
 
 function previewController($scope, exerciseService){
+  $scope.showButton = false;
   $scope.$on('planName', function(event,value){
     $scope.planName = value
+    console.log(value);
   })
   $scope.$on('planLength', function(event,value){
     $scope.planLength = value
@@ -28,6 +30,9 @@ function previewController($scope, exerciseService){
   })
   $scope.$on('day7', function(event,value){
     $scope.day7 = value
+  })
+  $scope.$on('showSubmit', function(event){
+    $scope.showButton = true;
   })
   $scope.saveDay = function(data){
     console.log(data);

@@ -9,7 +9,7 @@
         <input type="text" name="dayName" ng-model="dayName"value="" placeholder="'Monday' or 'Leg Day'">
       </div>
       <br>
-      <button type="button" class="btn btn-primary" name="restButton" ng-click="planMaker.plan.day7.rest = true; planMaker.plan.day7.name = dayName; open('reviewPlan'); dayName=''; $broadcast('day7', planMaker.plan.day7);">Rest Day</button>
+      <button type="button" class="btn btn-primary" name="restButton" ng-click="planMaker.plan.day7.rest = true; planMaker.plan.day7.name = dayName; review();dayName='';">Rest Day</button>
       <button type="button" class="btn btn-primary" name="workoutButton" ng-click="planMaker.day7.prototype.showWorkout(dayName)">Workout Day</button>
     </form>
     <form id="day7WorkoutForm" class="hidden">

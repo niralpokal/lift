@@ -64,6 +64,9 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
 }
   vm.length= function(){
     var i = vm.plan.planName();
+    if(i == undefined || i == ""){
+      i = 'Plan';
+    }
     vm.plan.planName = i;
     $scope.$broadcast('planName', vm.plan.planName)
     document.getElementById('planNameForm').classList.add("hidden");
@@ -127,7 +130,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
       vm.plan.day2.name = name;
       document.getElementById('day2Form').classList.add("hidden");
       document.getElementById('day2WorkoutForm').classList.remove("hidden");
-    }
+    },
     addWorkout: function(){
       document.getElementById('day2Form').classList.add("hidden");
       document.getElementById('planDay2Form').classList.remove("hidden")
@@ -394,8 +397,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
     }
   }
   $scope.animationsEnabled = true;
-
-  $timeout($scope.open = function (type) {
+  $scope.review = function(){
+    $scope.$broadcast('day7', vm.plan.day7)
+    $scope.$broadcast('showSubmit')
+  }
+  $scope.open = function (type) {
+    console.log(type);
     if(type == 'reviewPlan'){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
@@ -413,10 +420,10 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
      if(plan == 'ok'){
        var send = planService.createPlan(vm.plan)
        send.then(function(response){
-
         })
+      }else if(plan =='edit'){
       }
       })
     }
-  },1000)
+  }
 }

@@ -20,7 +20,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day1.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -36,7 +36,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day2.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps:{{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -52,7 +52,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day3.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps:{{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -68,7 +68,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day4.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -86,7 +86,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day5.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -102,7 +102,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day6.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -118,7 +118,7 @@
               <li class="list-group-item" ng-repeat="exercise in planMaker.day7.exercises">
                 <b>{{exercise.name}}</b>
                 <br>
-                Sets: {{exercise.sets}} Reps: {{exercise.reps}}
+                Sets: {{exercise.numOfSets}} Reps: {{exercise.numOfReps}}
               </li>
             </ul>
           </div>
@@ -127,7 +127,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button id="editPlan"type="button" ng-click="edit()" class="btn btn-primary">Edit Plan</button>
+    <button id="editPlan"type="button" ng-click="cancel()" class="btn btn-primary">Edit Plan</button>
     <button id="confirmPlan"type="button" ng-click="ok()" class="btn btn-primary">Confirm Plan</button>
   </div>
 </div>
