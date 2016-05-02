@@ -19,11 +19,11 @@
             <div ng-if="day1.rest == true">
               <h4>Day 1 <br><small><span editable-text="day1.name">{{day1.name}}</span></small></h4>
               <hr>
-              <p>Rest Day: <span editable-checkbox="day1.rest" e-title="Rest Day?">{{day1.rest | Yes}}</span></p>
+              <p>Rest Day: <span editable-checkbox="day1.rest" e-title="Rest Day?">Yes</span></p>
             </div>
             <div ng-if="day1.rest == false">
               <h4>Day 1 <br><small><span editable-text="day1.name">{{day1.name}}</span></small></h4>
-              <p>Rest Day: <span class="planText" editable-checkbox="day1.rest" e-title="Rest Day?">{{day1.rest | No}}</span></p>
+              <p>Rest Day: <span class="planText" editable-checkbox="day1.rest" e-title="Rest Day?">No</span></p>
               <hr>
               <ul class="list-group">
                 <li class="list-group-item" ng-repeat="exercise in day1.exercises">

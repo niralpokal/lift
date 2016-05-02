@@ -218,7 +218,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
   }
   vm.day5.prototype ={
     showWorkout: function(name){
-      vm.plan.day4.name = name;
+      vm.plan.day5.name = name;
       document.getElementById('day5Form').className = "hidden";
       document.getElementById('day5WorkoutForm').className = "";
     },
