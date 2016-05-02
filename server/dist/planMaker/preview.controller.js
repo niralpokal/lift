@@ -30,6 +30,7 @@ function previewController($scope, exerciseService){
     $scope.day7 = value
   })
   $scope.saveDay = function(data){
+    console.log(data);
   }
   $scope.getExerciseId = function(val, exercise){
     var id = exerciseService.getExercise(val);
