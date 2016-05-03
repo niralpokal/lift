@@ -10,7 +10,7 @@ function login($http, $location, $scope, $uibModalInstance){
   vm.login = function(info, path){
     $uibModalInstance.close();
     document.getElementById('header').className="hidden row-fluid"
-    var update = $http.post('http://localhost:8080/login', info)
+    var update = $http.post('https://localhost:8080/login', info)
     update.then(function(data){
       $scope.go(path)
     })
