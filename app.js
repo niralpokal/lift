@@ -180,9 +180,9 @@ app.post('/plan', jsonParser, function(req, res) {
           res.sendStatus(404)
           db.close();
         }else{
-          db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.sendStatus(200)
+          db.close();
         }
       })
     }
@@ -221,8 +221,8 @@ app.delete('/plan', jsonParser, function(req, res) {
           res.sendStatus(404)
           db.close();
         }else{
-          db.close();
           res.sendStatus(200)
+          db.close();
         }
       })
     }
@@ -243,8 +243,8 @@ app.get('/exercise/:id/', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          db.close();
           res.send(docs);
+          db.close();
         }
       })
     }
