@@ -1,8 +1,8 @@
 var app = angular.module('lift')
 
-app.directive('planday3', planDay3);
+app.directive('planmakerday3', planMakerDay3);
 
-function planDay3(){
+function planMakerDay3(){
   return {
     templateUrl: 'planMaker/planDay3.directive.html'
   }

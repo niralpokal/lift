@@ -1,8 +1,8 @@
 app.controller('planMakerController', planMaker);
 
-app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', '$timeout', 'planService'];
+app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', 'planService'];
 
-function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, $timeout, planService){
+function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, planService){
   var vm = this;
   var _planName;
   var _planLength = 12;

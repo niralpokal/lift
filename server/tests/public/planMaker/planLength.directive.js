@@ -1,8 +1,8 @@
 var app = angular.module('lift')
 
-app.directive('planlength', planLength);
+app.directive('planmakerlength', planMakerLength);
 
-function planLength(){
+function planMakerLength(){
   return {
     templateUrl: 'planMaker/planLength.directive.html'
   }
