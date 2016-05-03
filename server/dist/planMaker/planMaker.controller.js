@@ -20,30 +20,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
       return arguments.length ? (_planLength = newLength) : _planLength;
     },
     day1:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day2:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day3:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day4:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day5:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day6:{
+      name:'',
       rest:false,
       exercises:[]
     },
     day7:{
+      name:'',
       rest:false,
       exercises:[]
     }
@@ -57,26 +64,43 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
 }
   vm.length= function(){
     var i = vm.plan.planName();
+    if(i == undefined || i == ""){
+      i = 'Plan';
+    }
     vm.plan.planName = i;
-    document.getElementById('planNameForm').className = "hidden panel panel-default";
-    document.getElementById('planLengthForm').className = "panel panel-default";
+    $scope.$broadcast('planName', vm.plan.planName)
+    document.getElementById('planNameForm').classList.add("hidden");
+    document.getElementById('planLengthForm').classList.remove("hidden");
   }
   vm.day1 = function(){
     var i = vm.plan.planLength();
     vm.plan.planLength = i;
-    document.getElementById('planLengthForm').className = "hidden panel panel-default";
-    document.getElementById('planDay1Form').className = "panel panel-default";
+    $scope.$broadcast('planLength', vm.plan.planLength)
+    document.getElementById('planLengthForm').classList.add("hidden");
+    document.getElementById('planDay1Form').classList.remove("hidden");
   }
   vm.day1.prototype ={
-    showWorkout: function(){
-      document.getElementById('day1Form').className = "hidden";
-      document.getElementById('day1WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day1.name = name;
+      document.getElementById('day1Form').classList.add("hidden");
+      document.getElementById('day1WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day1Form').classList.add("hidden");
+      document.getElementById('planDay1Form').classList.remove("hidden")
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day1WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -92,23 +116,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day1.exercises.push(exercise);
+        $scope.$broadcast('day1', vm.plan.day1)
       })
     }
   }
   vm.day2= function(){
-    document.getElementById('planDay1Form').className = "hidden panel panel-default";
-    document.getElementById('planDay2Form').className = "panel panel-default";
+    $scope.$broadcast('day1', vm.plan.day1)
+    document.getElementById('planDay1Form').classList.add("hidden");
+    document.getElementById('planDay2Form').classList.remove("hidden");
   }
   vm.day2.prototype ={
-    showWorkout: function(){
-      document.getElementById('day2Form').className = "hidden";
-      document.getElementById('day2WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day2.name = name;
+      document.getElementById('day2Form').classList.add("hidden");
+      document.getElementById('day2WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day2Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day2WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -124,23 +162,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day2.exercises.push(exercise);
+        $scope.$broadcast('day2', vm.plan.day2)
       })
     }
   }
   vm.day3= function(){
-    document.getElementById('planDay2Form').className = "hidden panel panel-default";
-    document.getElementById('planDay3Form').className = "panel panel-default";
+    $scope.$broadcast('day2', vm.plan.day2)
+    document.getElementById('planDay2Form').classList.add("hidden");
+    document.getElementById('planDay3Form').classList.remove("hidden");
   }
   vm.day3.prototype ={
-    showWorkout: function(){
-      document.getElementById('day3Form').className = "hidden";
-      document.getElementById('day3WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day3.name = name;
+      document.getElementById('day3Form').classList.add("hidden");
+      document.getElementById('day3WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day3Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day3WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -156,23 +208,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day3.exercises.push(exercise);
+        $scope.$broadcast('day3', vm.plan.day3)
       })
     }
   }
   vm.day4= function(){
-    document.getElementById('planDay3Form').className = "hidden panel panel-default";
-    document.getElementById('planDay4Form').className = "panel panel-default";
+    $scope.$broadcast('day3', vm.plan.day3)
+    document.getElementById('planDay3Form').classList.add("hidden");
+    document.getElementById('planDay4Form').classList.remove("hidden");
   }
   vm.day4.prototype ={
-    showWorkout: function(){
-      document.getElementById('day4Form').className = "hidden";
-      document.getElementById('day4WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day4.name = name;
+      document.getElementById('day4Form').classList.add("hidden");
+      document.getElementById('day4WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day4Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day4WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -188,23 +254,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day4.exercises.push(exercise);
+        $scope.$broadcast('day4', vm.plan.day4)
       })
     }
   }
   vm.day5 = function(){
-    document.getElementById('planDay4Form').className = "hidden panel panel-default";
-    document.getElementById('planDay5Form').className = "panel panel-default";
+    $scope.$broadcast('day4', vm.plan.day4)
+    document.getElementById('planDay4Form').classList.add("hidden");
+    document.getElementById('planDay5Form').classList.remove("hidden");
   }
   vm.day5.prototype ={
-    showWorkout: function(){
-      document.getElementById('day5Form').className = "hidden";
-      document.getElementById('day5WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day5.name = name;
+      document.getElementById('day5Form').classList.add("hidden");
+      document.getElementById('day5WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day5Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day5WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -220,23 +300,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day5.exercises.push(exercise);
+        $scope.$broadcast('day5', vm.plan.day5)
       })
     }
   }
   vm.day6= function(){
-    document.getElementById('planDay5Form').className = "hidden panel panel-default";
-    document.getElementById('planDay6Form').className = "panel panel-default";
+    $scope.$broadcast('day5', vm.plan.day5)
+    document.getElementById('planDay5Form').classList.add("hidden");
+    document.getElementById('planDay6Form').classList.remove("hidden");
   }
   vm.day6.prototype ={
-    showWorkout: function(){
-      document.getElementById('day6Form').className = "hidden";
-      document.getElementById('day6WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day6.name = name;
+      document.getElementById('day6Form').classList.add("hidden");
+      document.getElementById('day6WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day6Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.add("hidden");
+      document.getElementById('day6WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -252,23 +346,37 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day6.exercises.push(exercise);
+        $scope.$broadcast('day6', vm.plan.day6)
       })
     }
   }
   vm.day7= function(){
-    document.getElementById('planDay6Form').className = "hidden panel panel-default";
-    document.getElementById('planDay7Form').className = "panel panel-default";
+    $scope.$broadcast('day6', vm.plan.day6)
+    document.getElementById('planDay6Form').classList.add("hidden");
+    document.getElementById('planDay7Form').classList.remove("hidden");
   }
   vm.day7.prototype ={
-    showWorkout: function(){
-      document.getElementById('day7Form').className = "hidden";
-      document.getElementById('day7WorkoutForm').className = "";
+    showWorkout: function(name){
+      vm.plan.day7.name = name;
+      document.getElementById('day7Form').classList.add("hidden");
+      document.getElementById('day7WorkoutForm').classList.remove("hidden");
+    },
+    addWorkout: function(){
+      document.getElementById('day7Form').classList.add("hidden");
+      document.getElementById('planDay7Form').classList.remove("hidden")
+      document.getElementById('planDay1Form').classList.add("hidden");
+      document.getElementById('planDay2Form').classList.add("hidden");
+      document.getElementById('planDay3Form').classList.add("hidden");
+      document.getElementById('planDay4Form').classList.add("hidden");
+      document.getElementById('planDay5Form').classList.add("hidden");
+      document.getElementById('planDay6Form').classList.add("hidden");
+      document.getElementById('day7WorkoutForm').classList.remove("hidden");
     },
     selectMatch: function(val, set, reps){
       var exercise = {
-        sets:set,
-        reps:reps,
-        weight:0,
+        numOfSets:set,
+        numOfReps:reps,
+        sets:[],
         total:0,
         name:val,
         exerciseId:''
@@ -284,12 +392,17 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
           }
         }
         vm.plan.day7.exercises.push(exercise);
+        $scope.$broadcast('day7', vm.plan.day7)
       })
     }
   }
   $scope.animationsEnabled = true;
-
-  $timeout($scope.open = function (type) {
+  $scope.review = function(){
+    $scope.$broadcast('day7', vm.plan.day7)
+    $scope.$broadcast('showSubmit')
+  }
+  $scope.open = function (type) {
+    console.log(type);
     if(type == 'reviewPlan'){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
@@ -307,10 +420,10 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
      if(plan == 'ok'){
        var send = planService.createPlan(vm.plan)
        send.then(function(response){
-         console.log(response);
         })
+      }else if(plan =='edit'){
       }
       })
     }
-  },1000)
+  }
 }

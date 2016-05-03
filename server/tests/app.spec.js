@@ -11,7 +11,7 @@ var plan = {};
 
 describe('Lets test login routes', function(){
   it('I am making a new user', function(done){
-    this.timeout(5000)
+    this.timeout(7000)
     request({
       method: 'POST',
       url: 'http://localhost:' + port+ '/user',
@@ -72,7 +72,7 @@ describe('Lets test login routes', function(){
     request({
       method: 'POST',
       url:'http://localhost:'+ port+ '/plan',
-      json: {name: 'testPlan', length:12, day1:{
+      json: {name: 'testPlan', planLength:12, day1:{
         rest: false,
         exercises:{
           id:"",

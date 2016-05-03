@@ -2,7 +2,7 @@ casper.test.begin('Lets test the Login Feature', function(test){
   casper.start('http://localhost:8080',5,  function(){
 
   }).then(function(){
-    test.assertTextExists('Hello', 'The splash screen is displayed');
+    test.assertTextExists('Lift', 'The splash screen is displayed');
     this.capture('test1.png')
      this.click('#login');
   }).then(function(){

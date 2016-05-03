@@ -14,6 +14,7 @@
        <li ng-class="getClass('/home/')"><a href="#/home/">Home</a></li>
        <!-- Add the other links here-->
      </ul>
+     <p class="navbar-text">{{home.welcomemessage}} {{home.user.firstName}}</p>
      <ul class="nav navbar-nav navbar-right">
        <logout></logout>
      </ul>
@@ -21,7 +22,6 @@
   </div>
 </nav>
 <div class="text-center">
-  {{home.welcomemessage}} {{home.user.firstName}}
   <plan></plan>
   <planmaker></planmaker>
 </div>
