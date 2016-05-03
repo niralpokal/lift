@@ -31,6 +31,8 @@
  }
 
 .list-group-item{border-style: none}
+.btn-gray{
+  background-color: #dfdfdf !important;
+}
 
-
-body { padding-top: 60px; }
+body { padding-top: 50px; }
