@@ -5,7 +5,7 @@ userService.inject=['$http']
 
 function exerciseService($http){
   function getExercise(val){
-    return $http.get('http://localhost:8080/exercise/'+val)
+    return $http.get('/exercise/'+val)
   }
   return {
     getExercise:getExercise

@@ -11,13 +11,18 @@ function home($http, userService, $location, $route, $window){
     vm.user = info.data
   })
 
+  vm.gohome =function(){
+    document.getElementById('userPlan').classList.remove("hidden");
+    document.getElementById('planMaker').classList.add('hidden')
+  }
+
   vm.createPlan = function(){
-    //document.getElementById('userPlan').className ="hidden"
-    document.getElementById('planMaker').className ="row"
+    document.getElementById('userPlan').classList.add("hidden");
+    document.getElementById('planMaker').classList.remove('hidden')
   }
 
   vm.logout = function(info, path){
-    var update = $http.delete('http://localhost:8080/login')
+    var update = $http.delete('/login')
     update.then(function(data){
       var origin = window.location.origin
       $window.location.replace(origin);

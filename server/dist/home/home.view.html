@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="navController">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="navController">
   <div class="container">
     <div class="navbar-header">
      <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed" aria-expanded="false">
@@ -11,7 +11,7 @@
    </div>
    <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">
      <ul class="nav navbar-nav">
-       <li ng-class="getClass('/home/')"><a href="#/home/">Home</a></li>
+       <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.gohome()">Home</a></li>
        <!-- Add the other links here-->
      </ul>
      <p class="navbar-text">{{home.welcomemessage}} {{home.user.firstName}}</p>

@@ -1,8 +1,8 @@
 app.controller('planMakerController', planMaker);
 
-app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', '$timeout', 'planService'];
+app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', '$uibModal', 'planService'];
 
-function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, $timeout, planService){
+function planMaker($http, $location, $scope, userService, exerciseService, $uibModal, planService){
   var vm = this;
   var _planName;
   var _planLength = 12;
@@ -56,7 +56,7 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
     }
   }
   vm.getExercise = function (val){
-      return $http.get('http://localhost:8080/exercise/'+val).then(function(response){
+      return $http.get('/exercise/'+val).then(function(response){
     return response.data.map(function(item){
       return item.id
     });

@@ -5,7 +5,6 @@ function previewController($scope, exerciseService){
   $scope.showButton = false;
   $scope.$on('planName', function(event,value){
     $scope.planName = value
-    console.log(value);
   })
   $scope.$on('planLength', function(event,value){
     $scope.planLength = value
@@ -35,7 +34,6 @@ function previewController($scope, exerciseService){
     $scope.showButton = true;
   })
   $scope.saveDay = function(data){
-    console.log(data);
   }
   $scope.getExerciseId = function(val, exercise){
     var id = exerciseService.getExercise(val);

@@ -1,0 +1,13 @@
+<div class="col-md-3" ng-if="plan.plan">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">Day 3</h3>
+      <h3 class="panel-title text-center"><small>{{plan.plan.day3.name}}</small></h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-unstyled" ng-repeat="x in plan.plan.day3.exercises">
+        <li>{{x.name}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
