@@ -21,7 +21,6 @@ function CreateUser(user){
   this.weight = user.weight;
   this.height = user.height;
   this.age = user.age;
-  //this.pic = user.pic;
 }
 
 function CreatePlan(plan){
@@ -112,11 +111,11 @@ app.get('/user', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.cookie('id', docs[0]._id);
           res.cookie('user', docs[0].username);
           res.send(docs[0]);
+          db.close();
         }
       })
     }
