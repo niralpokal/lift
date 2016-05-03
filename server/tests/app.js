@@ -21,7 +21,6 @@ function CreateUser(user){
   this.weight = user.weight;
   this.height = user.height;
   this.age = user.age;
-  //this.pic = user.pic;
 }
 
 function CreatePlan(plan){
@@ -149,7 +148,6 @@ app.delete('/user', function(req,res){
   var user = {
     _id:ObjectID(req.cookies.id)
   }
-  console.log(user);
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
@@ -182,9 +180,9 @@ app.post('/plan', jsonParser, function(req, res) {
           res.sendStatus(404)
           db.close();
         }else{
-          db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.sendStatus(200)
+          db.close();
         }
       })
     }
@@ -223,8 +221,8 @@ app.delete('/plan', jsonParser, function(req, res) {
           res.sendStatus(404)
           db.close();
         }else{
-          db.close();
           res.sendStatus(200)
+          db.close();
         }
       })
     }
@@ -245,8 +243,8 @@ app.get('/exercise/:id/', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          db.close();
           res.send(docs);
+          db.close();
         }
       })
     }
@@ -254,7 +252,9 @@ app.get('/exercise/:id/', function(req, res) {
 });
 
 if(!require.main.loaded){
-  var server = app.listen(8080)
+  var port = process.env.PORT || 8080;
+  app.listen(port, function(){});
 }
+
 
 module.exports = app;
