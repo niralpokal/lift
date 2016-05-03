@@ -18,5 +18,8 @@ function plan($http, $location, $scope, userService, exerciseService, planServic
       vm.selected = { value: vm.plan.weeks[0]}
     }
   })
+  $scope.selectedWeek = function(item){
+    console.log(item);
+  }
 
 }

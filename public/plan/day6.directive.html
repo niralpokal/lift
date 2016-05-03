@@ -5,7 +5,14 @@
       <h3 class="panel-title text-center"><small>{{plan.plan.day6.name}}</small></h3>
     </div>
     <div class="panel-body">
-
+      <div ng-if="plan.plan.day6.rest == false">
+        <ul class="list-unstyled" ng-repeat="x in plan.plan.day6.exercises">
+          <li>{{x.name}}</li>
+        </ul>
+      </div>
+      <div ng-if="plan.plan.day6.rest == true">
+        <p>Rest Day</p>
+      </div>
     </div>
   </div>
 </div>
