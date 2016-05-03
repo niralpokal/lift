@@ -11,7 +11,7 @@ var plan = {};
 
 describe('Lets test login routes', function(){
   it('I am making a new user', function(done){
-    this.timeout(7000)
+    this.timeout(10000)
     request({
       method: 'POST',
       url: 'http://localhost:' + port+ '/user',
@@ -54,7 +54,7 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am logging in', function(done){
-    this.timeout(5000)
+    this.timeout(7000)
     request({
       method: 'POST',
       url:'http://localhost:'+ port+ '/login',
@@ -68,7 +68,7 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am creating a new workout plan', function(done){
-    this.timeout(7000)
+    this.timeout(10000)
     request({
       method: 'POST',
       url:'http://localhost:'+ port+ '/plan',
@@ -192,7 +192,7 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am deleting the plan', function(done){
-    this.timeout(5000)
+    this.timeout(10000)
     request({
       method: 'DELETE',
       url: 'http://localhost:' + port+ '/plan',
@@ -206,7 +206,7 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am deleting the user', function(done){
-    this.timeout(5000)
+    this.timeout(10000)
     request({
       method: 'DELETE',
       url:'http://localhost:'+ port+ '/user'

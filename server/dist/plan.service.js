@@ -5,7 +5,7 @@ userService.inject=['$http']
 
 function planService($http){
   function getPlan(){
-    return $http.get('https://localhost:8080/plan/');
+    return $http.get('/plan/');
   }
   function createPlan(val){
     return $http.post('/plan/', val)
