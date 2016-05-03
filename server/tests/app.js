@@ -112,11 +112,11 @@ app.get('/user', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.cookie('id', docs[0]._id);
           res.cookie('user', docs[0].username);
           res.send(docs[0]);
+          db.close();
         }
       })
     }
@@ -149,6 +149,7 @@ app.delete('/user', function(req,res){
   var user = {
     _id:ObjectID(req.cookies.id)
   }
+  console.log(user);
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
@@ -172,7 +173,6 @@ app.delete('/user', function(req,res){
 app.post('/plan', jsonParser, function(req, res) {
   req.body.user = ObjectID(req.cookies.id);
   var plan = new CreatePlan(req.body)
-  console.log(req.body.user);
   MongoClient.connect(url, function(err,db){
     if(err){
       res.sendStatus(503);
@@ -195,7 +195,6 @@ app.get('/plan', function(req, res) {
   var plan = {
     creator:ObjectID(req.cookies.id)
   }
-  console.log(plan);
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
@@ -206,7 +205,6 @@ app.get('/plan', function(req, res) {
           db.close();
         }else{
           res.send(docs[0]);
-          console.log(docs);
           db.close();
         }
       })
