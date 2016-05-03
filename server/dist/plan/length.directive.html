@@ -1,3 +1,15 @@
 <div class="row col-md-offset-4 col-md-4 clearfix" ng-if="plan.plan">
-  <h4><small>{{plan.plan.planLength}} Weeks Long</small></h4>
+  <h4>
+    <small>{{plan.plan.planLength}} Weeks Long </small>
+  </h4>
+  <div>
+    <ui-select append-to-body="true" ng-model="plan.selected.value">
+      <ui-select-match>
+        <span ng-bind="$select.selected.name"></span>
+      </ui-select-match>
+      <ui-select-choices repeat="item in plan.plan.weeks track by item.id">
+        <span ng-bind="item.name"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
 </div>
