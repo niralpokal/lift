@@ -17,7 +17,7 @@ function home($http, userService, $location, $route, $window){
   }
 
   vm.logout = function(info, path){
-    var update = $http.delete('https://localhost:8080/login')
+    var update = $http.delete('/login')
     update.then(function(data){
       var origin = window.location.origin
       $window.location.replace(origin);

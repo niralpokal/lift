@@ -8,7 +8,7 @@ function planService($http){
     return $http.get('https://localhost:8080/plan/');
   }
   function createPlan(val){
-    return $http.post('https://localhost:8080/plan/', val)
+    return $http.post('/plan/', val)
   }
   return {
     getPlan:getPlan,
