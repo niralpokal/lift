@@ -11,6 +11,11 @@ function home($http, userService, $location, $route, $window){
     vm.user = info.data
   })
 
+  vm.gohome =function(){
+    document.getElementById('userPlan').classList.remove("hidden");
+    document.getElementById('planMaker').classList.add('hidden')
+  }
+
   vm.createPlan = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.remove('hidden')
