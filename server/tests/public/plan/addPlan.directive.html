@@ -6,21 +6,51 @@
 <div class="row clearfix" ng-if="plan.selectedDay">
   <selectedday></selectedday>
   <br>
-  <div class="row clearfix" ng-repeat="x in plan.selectedDay.exercises">
-    <div class="col-md-3 clearfix">
-      <div class="text-center">
-        <h5>{{x.name}}</h5>
-        <h5><small>Goal</small></h5>
-        <h6>Sets: {{x.numOfSets}}</h6>
-        <h6>Sets: {{x.numOfReps}}</h6>
+  <div class="panel panel-default" ng-repeat="x in plan.selectedDay.exercises">
+    <div class="panel-body clearfix" >
+      <div class="col-md-3 clearfix">
+        <div class="text-center">
+          <h5>{{x.name}}</h5>
+          <h5><small>Goal</small></h5>
+          <h6>Sets: {{x.numOfSets}}</h6>
+          <h6>Sets: {{x.numOfReps}}</h6>
+          <button type="button" class="btn btn-sm btn-default"name="button">Exercise Guide</button>
+        </div>
       </div>
-    </div>
-    <div class="col-md-7">
-
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-success" name="button">Add Another Set</button>
+      <div class="col-md-7">
+        <table class="table table-bordered table-hover table-condensed">
+          <tr class="table-class">
+            <td ng-repeat="z in x.sets">
+              {{z.name}}
+              <form editable-form name="nameform" onaftersave="" ng-show="nameform.$visible">
+                <button type="submit" ng-disabled="nameform.$waiting" class="btn btn-primary">
+                  save
+                </button>
+                <button type="button" ng-disabled="nameform.$waiting" ng-click="nameform.$cancel()" class="btn btn-default">
+                  cancel
+                </button>
+              </form>
+              <button class="btn btn-default" ng-show="!nameform.$visible" ng-click="nameform.$show()">
+                edit
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td ng-repeat="z in x.sets">
+              Reps: <span editable-text="z.reps" e-name="name" e-form="nameform" onbeforesave="">{{z.reps}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td ng-repeat="z in x.sets">
+              Weight: <span editable-text="z.weight" e-name="name" e-form="nameform" onbeforesave="">{{z.weight}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-2 text-center">
+        <button type="button" class="btn btn-sm btn-success" name="button">Add Another Set</button>
+      </div>
+      <br>
     </div>
   </div>
-  <br>
 </div>

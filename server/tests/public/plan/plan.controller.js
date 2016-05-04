@@ -1,8 +1,8 @@
 app.controller('planController', plan);
 
-app.$inject = ['$http', '$location', '$scope', 'userService', 'exerciseService', 'planService'];
+app.$inject = ['$location', '$scope', 'userService', 'exerciseService', 'planService'];
 
-function plan($http, $location, $scope, userService, exerciseService, planService){
+function plan($location, $scope, userService, exerciseService, planService){
   var vm = this;
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
@@ -24,26 +24,45 @@ function plan($http, $location, $scope, userService, exerciseService, planServic
     document.getElementById('planTemplate').classList.add('hidden')
     document.getElementById('addToPlan').classList.remove('hidden')
     if(string == 'day1'){
-      vm.selectedDay = vm.plan.day1
+      vm.selectedDay = makeSets(vm.plan.day1);
+      console.log(vm.selectedDay);
       vm.selectedDay.day = 'Day 1'
     }else if(string == 'day2'){
-      vm.selectedDay = vm.plan.day2
+      vm.selectedDay = makeSets(vm.plan.day2);
       vm.selectedDay.day = 'Day 2'
     }else if(string == 'day3'){
-      vm.selectedDay = vm.plan.day3
+      vm.selectedDay = makeSets(vm.plan.day3);
       vm.selectedDay.day = 'Day 3'
     }else if(string == 'day4'){
-      vm.selectedDay = vm.plan.day4
+      vm.selectedDay = makeSets(vm.plan.day4);
       vm.selectedDay.day = 'Day 4'
     }else if(string == 'day5'){
-      vm.selectedDay = vm.plan.day5
+      vm.selectedDay = makeSets(vm.plan.day5);
       vm.selectedDay.day = 'Day 5'
     }else if(string == 'day6'){
-      vm.selectedDay = vm.plan.day6
+      vm.selectedDay = makeSets(vm.plan.day6);
       vm.selectedDay.day = 'Day 6'
     }else if(string == 'day7'){
-      vm.selectedDay = vm.plan.day7
+      vm.selectedDay = makeSets(vm.plan.day7);
       vm.selectedDay.day = 'Day 7'
     }
   }
+  function makeSets(object){
+    var z = 0;
+    while(z < object.exercises.length){
+      q = object.exercises[z]
+      for (var i =0; i<q.numOfSets; i++){
+        var set = {
+          id:(i+1),
+          name:("Set "+ (i+1)),
+          weight: 0,
+          reps: 0
+        }
+        object.exercises[z].sets.push(set);
+      }
+      z++;
+    }
+    return object;
+  }
+
 }

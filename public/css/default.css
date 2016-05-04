@@ -37,4 +37,8 @@
 [ng-click] {
     cursor: pointer;
 }
+.table-class{
+  font-weight: bold;
+  white-space: nowrap
+}
 body { padding-top: 50px; }
