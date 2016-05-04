@@ -19,11 +19,10 @@ function signup($http, $location, $scope, $uibModalInstance){
   vm.signup = function(info, path){
     $uibModalInstance.close();
     info.metric = vm.select.name
-    console.log(info);
     document.getElementById('header').classList.add('hidden')
-    //var update = $http.post('/user',info)
-    //update.then(function(){
-    // $scope.go(path)
-   //})
+    var update = $http.post('/user',info)
+    update.then(function(){
+     $scope.go(path)
+   })
  }
 }

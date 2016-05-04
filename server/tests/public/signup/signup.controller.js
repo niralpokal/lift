@@ -13,18 +13,16 @@ function signup($http, $location, $scope, $uibModalInstance){
     {name:'kgs'}
   ]
   vm.selectedMetric = function(val){
-    vm.selected = val
-    console.log(val);
+    vm.select = val
   }
   vm.selected = {value:vm.user.metricChoices[0]}
   vm.signup = function(info, path){
     $uibModalInstance.close();
-    info.metric = vm.selected.name
-    console.log(info);
+    info.metric = vm.select.name
     document.getElementById('header').classList.add('hidden')
-    //var update = $http.post('/user',info)
-    //update.then(function(){
-    // $scope.go(path)
-   //})
+    var update = $http.post('/user',info)
+    update.then(function(){
+     $scope.go(path)
+   })
  }
 }

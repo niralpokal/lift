@@ -19,7 +19,24 @@ function plan($http, $location, $scope, userService, exerciseService, planServic
     }
   })
   $scope.selectedWeek = function(item){
-    console.log(item);
   }
-
+  vm.selectDay = function(string){
+    document.getElementById('planTemplate').classList.add('hidden')
+    document.getElementById('addToPlan').classList.remove('hidden')
+    if(string == 'day1'){
+      vm.selectedDay = vm.plan.day1
+    }else if(string == 'day2'){
+      vm.selectedDay = vm.plan.day2
+    }else if(string == 'day3'){
+      vm.selectedDay = vm.plan.day3
+    }else if(string == 'day4'){
+      vm.selectedDay = vm.plan.day4
+    }else if(string == 'day5'){
+      vm.selectedDay = vm.plan.day5
+    }else if(string == 'day6'){
+      vm.selectedDay = vm.plan.day6
+    }else if(string == 'day7'){
+      vm.selectedDay = vm.plan.day7
+    }
+  }
 }

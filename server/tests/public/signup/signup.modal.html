@@ -26,7 +26,7 @@
           <input type="number" class="form-control" ng-model="user.weight"name="weight" placeholder="Weight">
         </div>
         <div class="col-md-2">
-          <ui-select ng-model="plan.selected.value" on-select="signup.selectedMetric($item, $model)"name="metric">
+          <ui-select ng-model="signup.selected.value" on-select="signup.selectedMetric($item, $model)"name="metric">
             <ui-select-match>
               <span ng-bind="$select.selected.name"></span>
             </ui-select-match>

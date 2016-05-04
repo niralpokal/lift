@@ -34,5 +34,7 @@
 .btn-gray{
   background-color: #dfdfdf !important;
 }
-
+[ng-click] {
+    cursor: pointer;
+}
 body { padding-top: 50px; }
