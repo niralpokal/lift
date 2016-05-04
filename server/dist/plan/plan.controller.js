@@ -25,18 +25,25 @@ function plan($http, $location, $scope, userService, exerciseService, planServic
     document.getElementById('addToPlan').classList.remove('hidden')
     if(string == 'day1'){
       vm.selectedDay = vm.plan.day1
+      vm.selectedDay.day = 'Day 1'
     }else if(string == 'day2'){
       vm.selectedDay = vm.plan.day2
+      vm.selectedDay.day = 'Day 2'
     }else if(string == 'day3'){
       vm.selectedDay = vm.plan.day3
+      vm.selectedDay.day = 'Day 3'
     }else if(string == 'day4'){
       vm.selectedDay = vm.plan.day4
+      vm.selectedDay.day = 'Day 4'
     }else if(string == 'day5'){
       vm.selectedDay = vm.plan.day5
+      vm.selectedDay.day = 'Day 5'
     }else if(string == 'day6'){
       vm.selectedDay = vm.plan.day6
+      vm.selectedDay.day = 'Day 6'
     }else if(string == 'day7'){
       vm.selectedDay = vm.plan.day7
+      vm.selectedDay.day = 'Day 7'
     }
   }
 }

@@ -14,7 +14,7 @@ function home($http, userService, $location, $route, $window){
   vm.gohome =function(){
     document.getElementById('userPlan').classList.remove("hidden");
     document.getElementById('planMaker').classList.add('hidden')
-    document.getElementById('planTemplate').classList.remvoe('hidden');
+    document.getElementById('planTemplate').classList.remove('hidden');
     document.getElementById('addToPlan').classList.add('hidden')
   }
 
