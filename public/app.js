@@ -15,7 +15,7 @@ app.run(['$rootScope', '$location', '$cookies', '$window', 'editableOptions', 'u
   var id =  $cookies.get('id')
   var remember = $cookies.get('remember')
   if (remember == 'true' && id != undefined){
-    document.getElementById('header').className="hidden row-fluid"
+    document.getElementById('header').classList.add('hidden')
     $location.path('/home/')
   }
   $rootScope.$on('$locationChangeStart', function(event, next, current){

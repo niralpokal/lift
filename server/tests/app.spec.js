@@ -163,8 +163,22 @@ describe('Lets test login routes', function(){
       }
     })
   })
-  it('I am updating the user', function(done){
+  it('I am updating the plan', function(done){
     this.timeout(5000)
+    request({
+      method: 'PUT',
+      url: 'http://localhost:'+ port+ '/plan',
+      json: {planLength:12}
+    },function(err, response, body){
+      if(!err && response.statusCode==200){
+        done();
+      }else if(err){
+        throw(err);
+      }
+    })
+  })
+  it('I am updating the user', function(done){
+    this.timeout(7000)
     request({
       method: 'PUT',
       url: 'http://localhost:'+ port+ '/user',

@@ -217,6 +217,26 @@ app.get('/plan', function(req, res) {
   })
 });
 
+app.put('/plan', jsonParser,  function(req, res) {
+  var plan = {weeks: req.body}
+  var id ={creator:ObjectID(req.cookies.id)}
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503);
+    }else {
+      db.collection('plans').update(id, {$set:plan}, function(err, results){
+        if (err){
+          res.sendStatus(404);
+          db.close();
+        }else{
+          res.sendStatus(200)
+          db.close();
+        }
+      })
+    }
+  })
+});
+
 app.delete('/plan', jsonParser, function(req, res) {
   var plan = req.body;
   MongoClient.connect(url, function(err, db){
