@@ -35,7 +35,7 @@ function plan($location, $scope, userService, exerciseService, planService){
       vm.selectedWeek = item;
     });
   }
-
+  
   vm.selectDay = function(string){
     document.getElementById('planTemplate').classList.add('hidden')
     document.getElementById('addToPlan').classList.remove('hidden')
@@ -111,6 +111,7 @@ function plan($location, $scope, userService, exerciseService, planService){
       }
     }
   }
+
   function makeSets(object, num){
     var num = num
     var z = 0;
@@ -134,9 +135,7 @@ function plan($location, $scope, userService, exerciseService, planService){
     }
     return object;
   }
-  vm.log = function(data, index){
-    console.log(data);
-  }
+
   vm.save = function(){
     var payload;
     for(var i = 0; i<vm.plan.weeks.length; i++){
@@ -148,7 +147,6 @@ function plan($location, $scope, userService, exerciseService, planService){
     payload = vm.plan.weeks
     var update =  planService.updatePlan(payload)
     update.then(function(result){
-
     })
   }
 
