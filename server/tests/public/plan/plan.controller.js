@@ -25,13 +25,14 @@ function plan($location, $scope, userService, exerciseService, planService){
       }
       vm.selected = { value: vm.plan.weeks[0]}
       vm.selectedWeek = vm.plan.weeks[0]
+    }else{
+      vm.selected = { value: vm.plan.weeks[0]}
+      vm.selectedWeek = vm.plan.weeks[0]
     }
   })
   $scope.selectWeek = function(item, item2){
     $scope.$apply(function(){
-      //console.log(item);
       vm.selectedWeek = item;
-      //console.log(vm.selectedWeek);
     });
   }
 
@@ -51,7 +52,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day2'){
       if(vm.selectedWeek.day2.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day2)
-        vm.selectedWeek.day2 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day2 = $.extend(true,{}, temp2)
         vm.selectedWeek.day2.day = 'Day 2'
         vm.selectedDay = vm.selectedWeek.day2
       } else{
@@ -60,7 +62,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day3'){
       if(vm.selectedWeek.day3.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day3)
-        vm.selectedWeek.day3 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day3 = $.extend(true,{}, temp2)
         vm.selectedWeek.day3.day = 'Day 3'
         vm.selectedDay = vm.selectedWeek.day3
       } else{
@@ -69,7 +72,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day4'){
       if(vm.selectedWeek.day4.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day4)
-        vm.selectedWeek.day4 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day4 = $.extend(true,{}, temp2)
         vm.selectedWeek.day4.day = 'Day 4'
         vm.selectedDay = vm.selectedWeek.day4
       } else{
@@ -78,7 +82,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day5'){
       if(vm.selectedWeek.day5.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day5)
-        vm.selectedWeek.day5 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day5 = $.extend(true,{}, temp2)
         vm.selectedWeek.day5.day = 'Day 5'
         vm.selectedDay = vm.selectedWeeks.day5
       } else{
@@ -87,7 +92,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day6'){
       if(vm.selectedWeek.day6.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day6)
-        vm.selectedWeek.day6 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day6 = $.extend(true,{}, temp2)
         vm.selectedWeek.day6.day = 'Day 6'
         vm.selectedDay = vm.selectedWeek.day6
       } else{
@@ -96,7 +102,8 @@ function plan($location, $scope, userService, exerciseService, planService){
     }else if(string == 'day7'){
       if(vm.selectedWeek.day7.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day7)
-        vm.selectedWeek.day7 = makeSets(temp);
+        var temp2 = makeSets(temp, vm.selectedWeek.id);
+        vm.selectedWeek.day7 = $.extend(true,{}, temp2)
         vm.selectedWeek.day7.day = 'Day 7'
         vm.selectedDay = vm.selectedWeek.day7
       } else{
@@ -129,6 +136,20 @@ function plan($location, $scope, userService, exerciseService, planService){
   }
   vm.log = function(data, index){
     console.log(data);
+  }
+  vm.save = function(){
+    var payload;
+    for(var i = 0; i<vm.plan.weeks.length; i++){
+      if(vm.plan.weeks[i].id == vm.selectedWeek.id){
+        vm.plan.weeks[i] = vm.selectedWeek;
+        break;
+      }
+    }
+    payload = vm.plan.weeks
+    var update =  planService.updatePlan(payload)
+    update.then(function(result){
+
+    })
   }
 
 }

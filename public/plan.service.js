@@ -10,8 +10,12 @@ function planService($http){
   function createPlan(val){
     return $http.post('/plan/', val)
   }
+  function updatePlan(val){
+    return $http.put('/plan/', val)
+  }
   return {
     getPlan:getPlan,
-    createPlan:createPlan
+    createPlan:createPlan,
+    updatePlan:updatePlan
   }
 }

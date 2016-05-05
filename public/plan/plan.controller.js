@@ -25,13 +25,14 @@ function plan($location, $scope, userService, exerciseService, planService){
       }
       vm.selected = { value: vm.plan.weeks[0]}
       vm.selectedWeek = vm.plan.weeks[0]
+    }else{
+      vm.selected = { value: vm.plan.weeks[0]}
+      vm.selectedWeek = vm.plan.weeks[0]
     }
   })
   $scope.selectWeek = function(item, item2){
     $scope.$apply(function(){
-      //console.log(item);
       vm.selectedWeek = item;
-      //console.log(vm.selectedWeek);
     });
   }
 
@@ -135,6 +136,20 @@ function plan($location, $scope, userService, exerciseService, planService){
   }
   vm.log = function(data, index){
     console.log(data);
+  }
+  vm.save = function(){
+    var payload;
+    for(var i = 0; i<vm.plan.weeks.length; i++){
+      if(vm.plan.weeks[i].id == vm.selectedWeek.id){
+        vm.plan.weeks[i] = vm.selectedWeek;
+        break;
+      }
+    }
+    payload = vm.plan.weeks
+    var update =  planService.updatePlan(payload)
+    update.then(function(result){
+
+    })
   }
 
 }
