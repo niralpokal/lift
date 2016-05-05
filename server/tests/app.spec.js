@@ -178,7 +178,7 @@ describe('Lets test login routes', function(){
     })
   })
   it('I am updating the user', function(done){
-    this.timeout(5000)
+    this.timeout(7000)
     request({
       method: 'PUT',
       url: 'http://localhost:'+ port+ '/user',
