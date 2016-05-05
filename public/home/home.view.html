@@ -12,6 +12,7 @@
    <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'">
      <ul class="nav navbar-nav">
        <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.gohome()">Home</a></li>
+       <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.getExercises()">Exercises</a></li>
        <!-- Add the other links here-->
      </ul>
      <p class="navbar-text">{{home.welcomemessage}} {{home.user.firstName}}</p>
@@ -24,4 +25,5 @@
 <div class="text-center">
   <plan></plan>
   <planmaker></planmaker>
+  <exercises></exercises>
 </div>
