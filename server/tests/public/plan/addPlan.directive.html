@@ -26,12 +26,12 @@
           </tr>
           <tr>
             <td ng-repeat="z in x.sets">
-              Reps: <a href="#" editable-number="z.reps" e-name="sets">{{z.reps}}</a>
+              Reps: <a href="#" editable-number="z.reps" e-name="sets" e-min="0">{{z.reps}}</a>
             </td>
           </tr>
           <tr>
             <td ng-repeat="z in x.sets">
-              Weight: <a href="#" editable-number="z.weight" e-name="reps" onbeforesave="plan.log()">{{z.weight}}</a> Lbs. 
+              Weight: <a href="#" editable-number="z.weight" e-name="reps" onaftersave="plan.log(x.sets, $index)" e-min="0">{{z.weight}}</a> Lbs.
             </td>
           </tr>
         </table>
