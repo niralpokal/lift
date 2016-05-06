@@ -33,10 +33,14 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   $scope.selectWeek = function(item, item2){
     $scope.$apply(function(){
       vm.selectedWeek = item;
+      if(vm.string !=undefined){
+        vm.selectDay(vm.string)
+      }
     });
   }
 
   vm.selectDay = function(string){
+    vm.string = string;
     document.getElementById('planTemplate').classList.add('hidden')
     document.getElementById('addToPlan').classList.remove('hidden')
     if(string == 'day1'){
