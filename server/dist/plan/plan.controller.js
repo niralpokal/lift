@@ -7,6 +7,29 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
     vm.plan = result.data;
+    vm.plan.days = [{
+      name:'Day 1',
+      string: 'day1'
+    },{
+      name:'Day 2',
+      string: 'day2'
+    },{
+      name:'Day 3',
+      string: 'day3'
+    },{
+      name:'Day 4',
+      string: 'day4'
+    },{
+      name:'Day 5',
+      string: 'day5'
+    },{
+      name:'Day 6',
+      string: 'day6'
+    },{
+      name:'Day 7',
+      string: 'day7'
+    }]
+    vm.plan.day = { value: vm.plan.days[0] }
     if (vm.plan.weeks == undefined) {
       vm.plan.weeks = []
       for (var i = 0; i<vm.plan.planLength; i++){
@@ -38,7 +61,11 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       }
     });
   }
-
+  $scope.selectDay= function(item, item2){
+    $scope.$apply(function(){
+        vm.selectDay(item.string)
+    })
+  }
   vm.selectDay = function(string){
     vm.string = string;
     document.getElementById('planTemplate').classList.add('hidden')
