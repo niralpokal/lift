@@ -16,13 +16,13 @@ function home($http, userService, $location, $route, $window){
     document.getElementById('planMaker').classList.add('hidden')
     document.getElementById('planTemplate').classList.remove('hidden');
     document.getElementById('addToPlan').classList.add('hidden')
-    document.getElementById('exercises').classList.add("hidden");
+    document.getElementById('exercises').classList.remove("hidden");
   }
 
   vm.createPlan = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.remove('hidden')
-    document.getElementById('exercises').classList.add("hidden");
+    document.getElementById('exercises').classList.remove("hidden");
   }
   vm.getExercises = function(){
     document.getElementById('userPlan').classList.add("hidden");

@@ -1,1 +1,13 @@
-hi
+<div class="row hidden" id="exercises"ng-controller="exercisesController as exercise">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h3>Search Exercises</h3>
+      <p ng-if="exercise.number">{{exercise.number}} number of results</p>
+      <div class="input-group">
+        <span class="input-group-addon"></span>
+        <input type="text" class="form-control" ng-model="query" ng-keypress="exercise.search(query)">
+
+      </div>
+    </div>
+  </div>
+</div>

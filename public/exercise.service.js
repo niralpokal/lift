@@ -1,7 +1,7 @@
 var app = angular.module('lift');
 
 app.factory('exerciseService', exerciseService);
-userService.inject=['$http']
+exerciseService.inject=['$http']
 
 function exerciseService($http){
   function getExercise(val){
