@@ -2,7 +2,7 @@
   <h4>
     <small>{{plan.plan.planLength}} Weeks Long </small>
   </h4>
-  <div>
+  <div class="col-md-6">
     <ui-select append-to-body="true" ng-model="plan.selected.value" on-select="selectWeek($item, $model)" ng-change="changeWeek($data)">
       <ui-select-match>
         <span ng-bind="$select.selected.name"></span>
@@ -12,4 +12,5 @@
       </ui-select-choices>
     </ui-select>
   </div>
+  <selectday></selectday>
 </div>
