@@ -166,7 +166,17 @@ function plan($location, $scope, userService, exerciseService, planService, exer
     }
     return object;
   }
-
+  vm.addSet = function(data){
+    var myArray = data[data.length -1];
+    var set = {
+      id: (myArray.id +1),
+      name:("Set " + (myArray.id + 1)),
+      weight: 0,
+      reps: 0,
+      week: myArray.week
+      }
+      data.push(set)
+  }
   vm.save = function(){
     var payload;
     for(var i = 0; i<vm.plan.weeks.length; i++){
