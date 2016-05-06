@@ -5,11 +5,11 @@ app.$inject = ['$scope', 'exerciseService', '$uibModal']
 function exercise($scope, exerciseService, $uibModal){
   var vm = this;
   vm.search = function(data){
+    vm.query = data
     var update = exerciseService.getExercise(data);
     update.then(function(results){
       vm.number = results.data.length
       vm.list = results.data
-      console.log(vm.list[0]);
     })
   }
   vm.open = function(data){

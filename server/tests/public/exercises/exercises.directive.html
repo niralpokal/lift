@@ -2,10 +2,14 @@
   <div class="container">
     <div class="jumbotron text-center">
       <h3>Search Exercises</h3>
-      <p ng-if="exercise.number">{{exercise.number}} number of results</p>
+      <p ng-if="exercise.number">{{exercise.number}} number of results for "{{exercise.query}}"</p>
       <div class="input-group col-md-offset-4 col-md-4">
-        <input type="text" class="form-control" ng-model="query">
-        <button type="button" class="btn btn-gray" name="button" ng-click="exercise.search(query)">Search</button>
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="query">
+          </div>
+          <button type="button" class="btn btn-gray" name="button" ng-click="exercise.search(query)">Search</button>
+        </form>
       </div>
     </div>
     <div class="row" ng-if="exercise.list">

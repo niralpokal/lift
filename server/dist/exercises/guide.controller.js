@@ -1,13 +1,13 @@
 app.controller('guideController', guide);
 
-app.$inject = ['$scope', '$uibModalInstance', 'Exercise'];
+app.$inject = ['$scope', '$uibModalInstance', 'Exercise', '$window'];
 
-function guide($scope, $uibModalInstance, Exercise){
+function guide($scope, $uibModalInstance, Exercise, $window){
   var vm = this
   vm.info = Exercise
-  console.log($scope.guide);
-  $scope.go= function(path){
-    console.log();
+  vm.go= function(path){
+    console.log(path);
+    $window.open(path, '_blank');
   }
   vm.close = function(){
     $uibModalInstance.close()
