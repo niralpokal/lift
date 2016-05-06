@@ -1,10 +1,14 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h3 class="modal-title">Exercise Guide</h3>
+    <h3 class="modal-title">Exercise Guide for {{guide.info.id}}</h3>
   </div>
   <div class="modal-body">
-
+    <div class="row">
+      <ol class="list-group ol-group">
+        <li class="list-group-item number" ng-repeat="x in guide.info.guide">{{x}}</li>
+      </ol>
+    </div>
   <div class="modal-footer">
-    <button id="loginBtn" type="button" ng-click="" class="btn btn-primary">Close</button>
+    <button type="button" ng-click="guide.close()" class="btn btn-primary">Close</button>
   </div>
 </div>

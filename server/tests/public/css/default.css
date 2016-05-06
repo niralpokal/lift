@@ -41,4 +41,8 @@
   font-weight: bold;
   white-space: nowrap
 }
+.ol-group{
+  list-style: decimal inside;
+}
+.number{display: list-item;}
 body { padding-top: 50px; }
