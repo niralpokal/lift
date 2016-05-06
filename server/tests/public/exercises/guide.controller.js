@@ -6,7 +6,6 @@ function guide($scope, $uibModalInstance, Exercise, $window){
   var vm = this
   vm.info = Exercise
   vm.go= function(path){
-    console.log(path);
     $window.open(path, '_blank');
   }
   vm.close = function(){

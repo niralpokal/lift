@@ -1,8 +1,8 @@
 app.controller('planController', plan);
 
-app.$inject = ['$location', '$scope', 'userService', 'exerciseService', 'planService'];
+app.$inject = ['$location', '$scope', 'userService', 'exerciseService', 'planService', 'exerciseService', '$uibModal'];
 
-function plan($location, $scope, userService, exerciseService, planService){
+function plan($location, $scope, userService, exerciseService, planService, exerciseService, $uibModal){
   var vm = this;
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
@@ -35,7 +35,7 @@ function plan($location, $scope, userService, exerciseService, planService){
       vm.selectedWeek = item;
     });
   }
-  
+
   vm.selectDay = function(string){
     document.getElementById('planTemplate').classList.add('hidden')
     document.getElementById('addToPlan').classList.remove('hidden')
@@ -148,6 +148,28 @@ function plan($location, $scope, userService, exerciseService, planService){
     var update =  planService.updatePlan(payload)
     update.then(function(result){
     })
+  }
+  vm.open = function(data){
+    var service = exerciseService.getExercise(data);
+    service.then(function(results){
+      vm.info = results.data[0];
+      $scope.open('exercise')
+    })
+  }
+  $scope.open = function(string){
+    if(string == 'exercise'){
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: '/exercises/exercise.modal.html',
+        controller: 'guideController',
+        controllerAs: 'guide',
+        resolve: {
+          Exercise: function(){
+            return  vm.info;
+          }
+        }
+      })
+    }
   }
 
 }
