@@ -2,11 +2,27 @@
   <div class="container">
     <div class="jumbotron text-center">
       <h3>Search Exercises</h3>
-      <p ng-if="exercise.number">{{exercise.number}} of results</p>
-      <div class="input-group">
-        <span class="input-group-addon"></span>
-        <input type="text" class="form-control" ng-model="query" ng-keypress="exercise.search(query)">
-
+      <p ng-if="exercise.number">{{exercise.number}} number of results</p>
+      <div class="input-group col-md-offset-4 col-md-4">
+        <input type="text" class="form-control" ng-model="query">
+        <button type="button" class="btn btn-gray" name="button" ng-click="exercise.search(query)">Search</button>
+      </div>
+    </div>
+    <div class="row" ng-if="exercise.list">
+      <div class="col-md-12">
+        <div class="col-md-offset-1 col-md-3" ng-repeat="x in exercise.list">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>{{x.id}}</h4>
+              <h4><small>Main Muscle: {{x["Main Muscle Worked"]}}</small></h4>
+            </div>
+            <div class="panel-body">
+              <img class="img-responsive" ng-src="{{x.pic_left}}"></img>
+              <br>
+              <button type="button" name="button" class="btn btn-success" ng-click="exercise.open(x)">Show Guide</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
