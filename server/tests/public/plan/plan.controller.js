@@ -212,5 +212,4 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       })
     }
   }
-
 }
