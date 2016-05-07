@@ -3,18 +3,18 @@
     <div class="jumbotron text-center">
       <h3>Search Exercises</h3>
       <p ng-if="exercise.number">{{exercise.number}} number of results for "{{exercise.query}}"</p>
-      <div class="input-group col-md-offset-4 col-md-4">
+      <div class="input-group col-xs-offset-4 col-xs-4">
         <form class="form-inline">
           <div class="form-group">
             <input type="text" class="form-control" ng-model="query">
           </div>
-          <button type="button" class="btn btn-default" name="button" ng-click="exercise.search(query)">Search</button>
+          <button type="button" class="btn btn-default margin" name="button" ng-click="exercise.search(query)">Search</button>
         </form>
       </div>
     </div>
     <div class="row" ng-if="exercise.list">
-      <div class="col-md-12">
-        <div class="col-md-4" ng-repeat="x in exercise.list">
+      <div class="col-md-12 col-sm-12">
+        <div class="col-md-4 col-sm-4" ng-repeat="x in exercise.list">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4>{{x.id}}</h4>

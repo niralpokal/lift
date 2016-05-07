@@ -47,4 +47,10 @@
   list-style: decimal inside;
 }
 .number{display: list-item;}
+
 body { padding-top: 50px; }
+@media screen and (max-width: 991px){
+  .margin {
+    margin-top: 5px;
+  }
+}

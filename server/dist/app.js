@@ -1,4 +1,4 @@
-var app = angular.module('lift', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ngDragDrop', 'xeditable', 'ngSanitize', 'ui.select']);
+var app = angular.module('lift', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ngDragDrop', 'xeditable', 'ngSanitize', 'ui.select', 'angular-loading-bar', 'ngAnimate']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider

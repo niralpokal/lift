@@ -1,1 +1,16 @@
-<div class="row col-md-offset-4 col-md-4 clearfix" ng-if="plan.plan"><h4><small>{{plan.plan.planLength}} Weeks Long</small></h4><div class="col-md-6"><ui-select append-to-body="true" ng-model="plan.selected.value" on-select="selectWeek($item, $model)" ng-change="changeWeek($data)"><ui-select-match><span ng-bind="$select.selected.name"></span></ui-select-match><ui-select-choices repeat="item in plan.plan.weeks track by item.id"><span ng-bind="item.name"></span></ui-select-choices></ui-select></div><selectday></selectday></div>
+<div class="row col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 clearfix col-xs-offset-4 col-xs-4" ng-if="plan.plan">
+  <h4>
+    <small>{{plan.plan.planLength}} Weeks Long </small>
+  </h4>
+  <div class="col-md-6 col-sm-6">
+    <ui-select append-to-body="true" ng-model="plan.selected.value" on-select="selectWeek($item, $model)" ng-change="changeWeek($data)">
+      <ui-select-match>
+        <span ng-bind="$select.selected.name"></span>
+      </ui-select-match>
+      <ui-select-choices repeat="item in plan.plan.weeks track by item.id">
+        <span ng-bind="item.name"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  <selectday></selectday>
+</div>

@@ -1,1 +1,18 @@
-<div class="col-md-4" ng-if="plan.plan"><div class="panel panel-default" ng-click="plan.selectDay('day7')"><div class="panel-heading"><h3 class="panel-title text-center">Day 7</h3><h3 class="panel-title text-center"><small>{{plan.plan.day7.name}}</small></h3></div><div class="panel-body"><div ng-if="plan.plan.day7.rest == false"><ul class="list-unstyled" ng-repeat="x in plan.plan.day7.exercises"><li>{{x.name}}</li></ul></div><div ng-if="plan.plan.day7.rest == true"><p>Rest Day</p></div></div></div></div>
+<div class="col-md-4 col-sm-4" ng-if="plan.plan">
+  <div class="panel panel-default" ng-click="plan.selectDay('day7')">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">Day 7</h3>
+      <h3 class="panel-title text-center"><small>{{plan.plan.day7.name}}</small></h3>
+    </div>
+    <div class="panel-body">
+      <div ng-if="plan.plan.day7.rest == false">
+        <ul class="list-unstyled" ng-repeat="x in plan.plan.day7.exercises">
+          <li>{{x.name}}</li>
+        </ul>
+      </div>
+      <div ng-if="plan.plan.day7.rest == true">
+        <p>Rest Day</p>
+      </div>
+    </div>
+  </div>
+</div>
