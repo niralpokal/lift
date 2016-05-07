@@ -34,9 +34,6 @@
 .btn-gray{
   background-color: #dfdfdf !important;
 }
-.btn-darkgray{
-  background-color: #484848 !important;
-}
 [ng-click] {
     cursor: pointer;
 }
