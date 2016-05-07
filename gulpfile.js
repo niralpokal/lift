@@ -4,9 +4,34 @@ var nodemon = require('gulp-nodemon')
 var casperJs = require('gulp-casperjs')
 var flatten = require('gulp-flatten')
 var app = require('./app.js')
+var eslint = require('gulp-eslint')
+var htmlmin = require('gulp-htmlmin');
+var csso = require('gulp-csso');
+
+gulp.task('lint', function(){
+  return gulp.src('server/dist/**/*.js').pipe(eslint({
+    rules:{
+      "no-console": 1
+    }
+  })).pipe(eslint.format()).pipe(eslint.failAfterError())
+})
+
+gulp.task('minifyHtml', function(){
+  return gulp.src('public/**/*.html')
+  .pipe(htmlmin({collapseWhitespace: true}))
+  .pipe(gulp.dest('public/'))
+})
+
+gulp.task('minifyCSS', function(){
+  return gulp.src('public/css/default.css')
+  .pipe(csso())
+  .pipe(gulp.dest('public/css/'))
+})
+
+gulp.task('minify', ['minifyHtml', 'minifyCSS']);
 
 gulp.task('copyScripts', function(){
-  gulp.src('scripts/*.js').pipe(gulp.dest('public/scripts'))
+  gulp.src('scripts/*.js').pipe(gulp.dest('server/dist/scripts'))
 })
 
 gulp.task('flattenBower',['copyScripts'], function(){
