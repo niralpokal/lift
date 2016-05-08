@@ -1,9 +1,9 @@
 
 app.controller('homeController', home);
 
-app.$inject = ['$http', 'userService', '$location', '$route', '$window'];
+app.$inject = ['$http', 'userService', '$location', '$route', '$window', '$scope'];
 
-function home($http, userService, $location, $route, $window){
+function home($http, userService, $location, $route, $window, $scope){
   var vm = this;
   var currentUser = userService.getUser();
   currentUser.then(function(info){
@@ -29,6 +29,9 @@ function home($http, userService, $location, $route, $window){
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.remove("hidden");
   }
+  $scope.$on('selectPlan', function(event ,data){
+    $scope.$broadcast('selectPlanNav', data)
+  })
 
   vm.logout = function(info, path){
     var update = $http.delete('/login')

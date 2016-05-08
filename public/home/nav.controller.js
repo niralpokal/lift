@@ -7,7 +7,12 @@ function navController($scope, $location) {
     $scope.$on('$routeChangeSuccess', function () {
         $scope.isCollapsed = true;
     });
-    $scope.$on('selectPlan', function(event, data){
-      console.log(data.length);
+    $scope.$on('selectPlanNav', function(event, data){
+      $scope.plans = true
+      console.log(data);
+      $scope.plan = data
     })
+    $scope.selectedPlan = function(val){
+      console.log(val);
+    }
 }
