@@ -1,29 +1,30 @@
 <div class="modal-content">
   <div class="modal-header">
     <h3 class="modal-title">Enter Your Signup Information!</h3>
+    <h4 class="red" ng-show="signup.error">Please fill out the form in full.</h4>
   </div>
   <div class="modal-body">
     <form name="signupForm">
-      <div class="form-group">
+      <div class="form-group" id="signup.firstName">
         <label for="firstName">First Name:</label>
-        <input type="text" class="form-control" ng-model="user.firstName"name="firstName" placeholder="First Name">
+        <input type="text" class="form-control" ng-model="user.firstName"name="firstName" placeholder="First Name" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="signup.lastName">
         <label for="lastName">Last Name:</label>
-        <input type="text" class="form-control" ng-model="user.lastName"name="lastName" placeholder="Last Name">
+        <input type="text" class="form-control" ng-model="user.lastName"name="lastName" placeholder="Last Name" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="signup.userName">
         <label for="name">Username:</label>
-        <input type="text" class="form-control" ng-model="user.username"name="username" placeholder="Username">
+        <input type="text" class="form-control" ng-model="user.username"name="username" placeholder="Username" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="signup.password">
         <label for="pass">Password:</label>
-        <input type="password" class="form-control" ng-model="user.pass"name="pass" placeholder="Password">
+        <input type="password" class="form-control" ng-model="user.pass"name="pass" placeholder="Password" required>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" id="signup.weight">
         <label class="col-md-2" for="weight">Weight:</label>
         <div class="col-md-8">
-          <input type="number" class="form-control" ng-model="user.weight"name="weight" placeholder="Weight">
+          <input type="number" class="form-control" ng-model="user.weight"name="weight" placeholder="Weight" required>
         </div>
         <div class="col-md-2">
           <ui-select ng-model="signup.selected.value" on-select="signup.selectedMetric($item, $model)"name="metric">
@@ -36,17 +37,17 @@
           </ui-select>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="signup.height">
         <label for="height">Height:</label>
-        <input type="number" class="form-control" ng-model="user.height"name="height" placeholder="Height in Inches">
+        <input type="number" class="form-control" ng-model="user.height"name="height" placeholder="Height in Inches" required>
       </div>
-      <div class="form-age">
+      <div class="form-group" id="signup.age">
         <label for="age">Age:</label>
-        <input type="number" class="form-control" ng-model="user.age"name="age" placeholder="Age">
+        <input type="number" class="form-control" ng-model="user.age"name="age" placeholder="Age" required>
       </div>
       </form>
       <div class="modal-footer">
-        <button id="signUpBtn"type="button" ng-click="signup.signup(user, '/home'); user=null" class="btn btn-primary">Signup</button>
+        <button id="signUpBtn"type="button" ng-click="signup.signup(user, '/home')" class="btn btn-primary">Signup</button>
     </div>
   </div>
 </div>

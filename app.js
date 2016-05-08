@@ -64,7 +64,10 @@ app.post('/login', jsonParser, function(req, res) {
         if(err){
           res.sendStatus(404)
           db.close();
-        }else{
+        }else if (docs[0] == undefined) {
+          res.sendStatus(401)
+          db.close();
+        }else {
           db.close();
           res.cookie('remember', true, {expires: new Date(Date.now()+ 900000)})
           res.cookie('id', docs[0]._id);
