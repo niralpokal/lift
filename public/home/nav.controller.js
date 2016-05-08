@@ -7,4 +7,7 @@ function navController($scope, $location) {
     $scope.$on('$routeChangeSuccess', function () {
         $scope.isCollapsed = true;
     });
+    $scope.$on('selectPlan', function(event, data){
+      console.log(data.length);
+    })
 }

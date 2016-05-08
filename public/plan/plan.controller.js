@@ -6,7 +6,8 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   var vm = this;
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
-    vm.plan = result.data;
+    $scope.$emit('selectPlan', result.data)
+    vm.plan = result.data[0];
     vm.plan.days = [{
       name:'Day 1',
       string: 'day1'

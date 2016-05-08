@@ -25,17 +25,20 @@ function signup($http, $location, $scope, $uibModalInstance){
       $scope.nameResults = false;
       document.getElementById('signup.userName').classList.add('has-success')
       document.getElementById('signup.userName').classList.remove('has-error')
+      vm.error1 = false;
       response.data.map(function(item){
         if(item){
           vm.check = item.username
           $scope.noResults = false;
           $scope.nameResults = true;
           document.getElementById('signup.userName').classList.add('has-error')
+          vm.error1 = true
         }
         if($scope.user.username == vm.check){
           $scope.noResults = false;
           $scope.nameResults = true;
           document.getElementById('signup.userName').classList.add('has-error')
+          vm.error1 = true;
         }
       })
     })
@@ -89,7 +92,7 @@ function signup($http, $location, $scope, $uibModalInstance){
         document.getElementById('signup.age').classList.add('has-error')
         vm.error = true
       }else{
-        if(vm.error == false){
+        if(vm.error == false && vm.error1 == false){
           document.getElementById('signup.age').classList.remove('has-error')
           info.metric = vm.select.name
           var update = $http.post('/user',info)

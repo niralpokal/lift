@@ -212,7 +212,7 @@ app.get('/plan', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          res.send(docs[0]);
+          res.send(docs);
           db.close();
         }
       })
@@ -286,7 +286,6 @@ app.get('/username/:id', function(req, res) {
   var user = {
     username:x
   }
-  console.log(x);
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
