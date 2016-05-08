@@ -32,6 +32,10 @@ function home($http, userService, $location, $route, $window, $scope){
   $scope.$on('selectPlan', function(event ,data){
     $scope.$broadcast('selectPlanNav', data)
   })
+  $scope.$on('selectedPlanNav', function(event, data){
+    vm.gohome()
+    $scope.$broadcast('selectedPlan', data)
+  })
 
   vm.logout = function(info, path){
     var update = $http.delete('/login')

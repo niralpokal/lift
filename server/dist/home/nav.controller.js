@@ -12,6 +12,6 @@ function navController($scope, $location) {
       $scope.plan = data
     })
     $scope.selectedPlan = function(val){
-      console.log(val);
+      $scope.$emit('selectedPlanNav', val)
     }
 }

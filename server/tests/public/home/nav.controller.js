@@ -9,10 +9,9 @@ function navController($scope, $location) {
     });
     $scope.$on('selectPlanNav', function(event, data){
       $scope.plans = true
-      console.log(data);
       $scope.plan = data
     })
     $scope.selectedPlan = function(val){
-      console.log(val);
+      $scope.$emit('selectedPlanNav', val)
     }
 }

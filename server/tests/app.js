@@ -34,15 +34,6 @@ function CreatePlan(plan){
   this.day5 = new PlanTemplate(plan.day5);
   this.day6 = new PlanTemplate(plan.day6);
   this.day7 = new PlanTemplate(plan.day7);
-  this.weeks = [];
-  for (var i = 0; i<plan.planLength; i++){
-    var object = {
-      id:(i+1),
-      name:"Week "+(i+1),
-      workouts: []
-    };
-    this.weeks.push(object);
-  }
 }
 
 function PlanTemplate(template){
