@@ -33,8 +33,8 @@ function home($http, userService, $location, $route, $window, $scope){
     $scope.$broadcast('selectPlanNav', data)
   })
   $scope.$on('selectedPlanNav', function(event, data){
-    vm.gohome()
     $scope.$broadcast('selectedPlan', data)
+    vm.gohome()
   })
 
   vm.logout = function(info, path){

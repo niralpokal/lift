@@ -8,60 +8,106 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   getPlan.then(function(result){
     if(result.data.length > 1){
       $scope.$emit('selectPlan', result.data)
+      vm.plan = result.data[data.length-1];
+      vm.plan.days = [{
+        name:'Day 1',
+        string: 'day1'
+      },{
+        name:'Day 2',
+        string: 'day2'
+      },{
+        name:'Day 3',
+        string: 'day3'
+      },{
+        name:'Day 4',
+        string: 'day4'
+      },{
+        name:'Day 5',
+        string: 'day5'
+      },{
+        name:'Day 6',
+        string: 'day6'
+      },{
+        name:'Day 7',
+        string: 'day7'
+      }]
+      vm.plan.day = { value: vm.plan.days[0] }
+      if (vm.plan.weeks == undefined) {
+        vm.plan.weeks = []
+        for (var i = 0; i<vm.plan.planLength; i++){
+          var object = {
+            id:(i+1),
+            name:"Week "+(i+1),
+            day1: {},
+            day2: {},
+            day3: {},
+            day4: {},
+            day5: {},
+            day6: {},
+            day7: {}
+          };
+          vm.plan.weeks.push(object);
+        }
+        vm.selected = { value: vm.plan.weeks[0]}
+        vm.selectedWeek = vm.plan.weeks[0]
+      }else{
+        vm.selected = { value: vm.plan.weeks[0]}
+        vm.selectedWeek = vm.plan.weeks[0]
+      }
       $scope.$on('selectedPlan', function(event, data){
-          vm.plan = data;
-          vm.plan.days = [{
-            name:'Day 1',
-            string: 'day1'
-          },{
-            name:'Day 2',
-            string: 'day2'
-          },{
-            name:'Day 3',
-            string: 'day3'
-          },{
-            name:'Day 4',
-            string: 'day4'
-          },{
-            name:'Day 5',
-            string: 'day5'
-          },{
-            name:'Day 6',
-            string: 'day6'
-          },{
-            name:'Day 7',
-            string: 'day7'
-          }]
-          console.log(vm.plan);
-          vm.plan.day = { value: vm.plan.days[0] }
-          if (vm.plan.weeks == undefined) {
-            vm.plan.weeks = []
-            for (var i = 0; i<vm.plan.planLength; i++){
-              var object = {
-                id:(i+1),
-                name:"Week "+(i+1),
-                day1: {},
-                day2: {},
-                day3: {},
-                day4: {},
-                day5: {},
-                day6: {},
-                day7: {}
-              };
-              vm.plan.weeks.push(object);
-            }
-            vm.selected = { value: vm.plan.weeks[0]}
-            vm.selectedWeek = vm.plan.weeks[0]
-            if(vm.string !=undefined){
-              vm.selectDay(vm.string)
-            }
-          }else{
-            vm.selected = { value: vm.plan.weeks[0]}
-            vm.selectedWeek = vm.plan.weeks[0]
-            if(vm.string !=undefined){
-              vm.selectDay(vm.string)
-            }
+        vm.plan = data;
+        vm.plan_id = data._id
+        vm.plan.days = [{
+          name:'Day 1',
+          string: 'day1'
+        },{
+          name:'Day 2',
+          string: 'day2'
+        },{
+          name:'Day 3',
+          string: 'day3'
+        },{
+          name:'Day 4',
+          string: 'day4'
+        },{
+          name:'Day 5',
+          string: 'day5'
+        },{
+          name:'Day 6',
+          string: 'day6'
+        },{
+          name:'Day 7',
+          string: 'day7'
+        }]
+        vm.plan.day = { value: vm.plan.days[0] }
+        if (vm.plan.weeks == undefined) {
+          vm.plan.weeks = []
+          for (var i = 0; i<vm.plan.planLength; i++){
+            var object = {
+              id:(i+1),
+              name:"Week "+(i+1),
+              day1: {},
+              day2: {},
+              day3: {},
+              day4: {},
+              day5: {},
+              day6: {},
+              day7: {}
+            };
+            vm.plan.weeks.push(object);
           }
+          vm.selected = { value: vm.plan.weeks[0]}
+          vm.selectedWeek = vm.plan.weeks[0]
+          if(vm.string !=undefined){
+            vm.selectDay(vm.string)
+          }
+        }else{
+          vm.selected = { value: vm.plan.weeks[0]}
+          vm.selectedWeek = vm.plan.weeks[0]
+          if(vm.string !=undefined){
+            vm.selectDay(vm.string)
+          }
+        }
       })
     }else {
       vm.plan = result.data[0];
