@@ -419,9 +419,12 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
      if(plan == 'ok'){
        var send = planService.createPlan(vm.plan)
        send.then(function(response){
+         planService.getPlan().then(function(results){
+           $scope.$emit('createPlan', results.data)
+         })
         })
       }else if(plan =='edit'){
-      }
+        }
       })
     }
   }

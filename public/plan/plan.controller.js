@@ -6,7 +6,78 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   var vm = this;
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
-    vm.plan = result.data;
+    if(result.data.length > 1){
+      vm.noPlan = false
+      $scope.$emit('selectPlan', result.data)
+      vm.plan = result.data[result.data.length-1];
+      vm.plan_id = result.data[result.data.length-1]._id
+      addDays();
+      $scope.$on('selectedPlan', function(event, data){
+        vm.noPlan = false;
+        vm.plan = data;
+        vm.plan_id = data._id
+        vm.plan.days = [{
+          name:'Day 1',
+          string: 'day1'
+        },{
+          name:'Day 2',
+          string: 'day2'
+        },{
+          name:'Day 3',
+          string: 'day3'
+        },{
+          name:'Day 4',
+          string: 'day4'
+        },{
+          name:'Day 5',
+          string: 'day5'
+        },{
+          name:'Day 6',
+          string: 'day6'
+        },{
+          name:'Day 7',
+          string: 'day7'
+        }]
+        vm.plan.day = { value: vm.plan.days[0] }
+        if (vm.plan.weeks == undefined) {
+          vm.plan.weeks = []
+          for (var i = 0; i<vm.plan.planLength; i++){
+            var object = {
+              id:(i+1),
+              name:"Week "+(i+1),
+              day1: {},
+              day2: {},
+              day3: {},
+              day4: {},
+              day5: {},
+              day6: {},
+              day7: {}
+            };
+            vm.plan.weeks.push(object);
+          }
+          vm.selected = { value: vm.plan.weeks[0]}
+          vm.selectedWeek = vm.plan.weeks[0]
+          if(vm.string !=undefined){
+            vm.selectDay(vm.string)
+          }
+        }else{
+          vm.selected = { value: vm.plan.weeks[0]}
+          vm.selectedWeek = vm.plan.weeks[0]
+          if(vm.string !=undefined){
+            vm.selectDay(vm.string)
+          }
+        }
+      })
+      }else if(result.data[0] == undefined){
+        vm.noPlan = true
+      } else {
+      vm.noPlan = false
+      vm.plan = result.data[0];
+      vm.plan_id = result.data[0]._id
+      addDays()
+    }
+  })
+  function addDays (){
     vm.plan.days = [{
       name:'Day 1',
       string: 'day1'
@@ -52,7 +123,8 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       vm.selected = { value: vm.plan.weeks[0]}
       vm.selectedWeek = vm.plan.weeks[0]
     }
-  })
+  }
+
   $scope.selectWeek = function(item, item2){
     $scope.$apply(function(){
       vm.selectedWeek = item;
@@ -63,7 +135,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   }
   $scope.selectDay= function(item, item2){
     $scope.$apply(function(){
-        vm.selectDay(item.string)
+      vm.selectDay(item.string)
     })
   }
   vm.selectDay = function(string){
@@ -158,7 +230,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
             weight: 0,
             reps: 0,
             week: num
-            }
+          }
           object.exercises[z].sets.push(set);
         }
         z++;
@@ -174,8 +246,8 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       weight: 0,
       reps: 0,
       week: myArray.week
-      }
-      data.push(set)
+    }
+    data.push(set)
   }
   vm.save = function(){
     var payload;
@@ -185,7 +257,10 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         break;
       }
     }
-    payload = vm.plan.weeks
+    payload ={
+      id: vm.plan_id,
+      weeks:vm.plan.weeks
+    }
     var update =  planService.updatePlan(payload)
     update.then(function(result){
     })

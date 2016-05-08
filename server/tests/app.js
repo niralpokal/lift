@@ -34,15 +34,6 @@ function CreatePlan(plan){
   this.day5 = new PlanTemplate(plan.day5);
   this.day6 = new PlanTemplate(plan.day6);
   this.day7 = new PlanTemplate(plan.day7);
-  this.weeks = [];
-  for (var i = 0; i<plan.planLength; i++){
-    var object = {
-      id:(i+1),
-      name:"Week "+(i+1),
-      workouts: []
-    };
-    this.weeks.push(object);
-  }
 }
 
 function PlanTemplate(template){
@@ -212,7 +203,7 @@ app.get('/plan', function(req, res) {
           res.sendStatus(404);
           db.close();
         }else{
-          res.send(docs[0]);
+          res.send(docs);
           db.close();
         }
       })
@@ -221,8 +212,8 @@ app.get('/plan', function(req, res) {
 });
 
 app.put('/plan', jsonParser,  function(req, res) {
-  var plan = {weeks: req.body}
-  var id ={creator:ObjectID(req.cookies.id)}
+  var plan = {weeks: req.body.weeks}
+  var id ={_id:ObjectID(req.body.id)}
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);
@@ -286,7 +277,6 @@ app.get('/username/:id', function(req, res) {
   var user = {
     username:x
   }
-  console.log(x);
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);

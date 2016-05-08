@@ -13,6 +13,12 @@
      <ul class="nav navbar-nav">
        <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.gohome()">Home</a></li>
        <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.getExercises()">Exercises</a></li>
+       <li uib-dropdown ng-show="plans">
+          <a href="#" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Switch Plans<span class="caret"></span></a>
+          <ul uib-dropdown-menu>
+            <li ng-repeat="x in plan"><a ng-click="selectedPlan(x)" >{{x.planName}}</a></li>
+          </ul>
+        </li>
      </ul>
      <p class="navbar-text">{{home.welcomemessage}} {{home.user.firstName}}</p>
      <ul class="nav navbar-nav navbar-right">

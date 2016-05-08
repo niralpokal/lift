@@ -1,4 +1,11 @@
 <div id="userPlan"class="row" ng-controller="planController as plan">
+  <div id="noPlan" ng-show="plan.noPlan"class="container">
+    <div class="jumbotron">
+      <h1>It seems like you do not have a plan.</h1>
+      <p>Please make one by clicking on the Create Plan Button</p>
+      <button type="button" class="btn btn-lg btn-success"name="button" ng-click="home.createPlan()">Create Plan</button>
+  </div>
+  </div>
   <div id="planTemplate" class="container">
     <div class="row">
       <planname></planname>

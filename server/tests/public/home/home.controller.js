@@ -1,9 +1,9 @@
 
 app.controller('homeController', home);
 
-app.$inject = ['$http', 'userService', '$location', '$route', '$window'];
+app.$inject = ['$http', 'userService', '$location', '$route', '$window', '$scope'];
 
-function home($http, userService, $location, $route, $window){
+function home($http, userService, $location, $route, $window, $scope){
   var vm = this;
   var currentUser = userService.getUser();
   currentUser.then(function(info){
@@ -15,21 +15,34 @@ function home($http, userService, $location, $route, $window){
     document.getElementById('userPlan').classList.remove("hidden");
     document.getElementById('planMaker').classList.add('hidden')
     document.getElementById('planTemplate').classList.remove('hidden');
-    document.getElementById('addToPlan').classList.add('hidden')
     document.getElementById('exercises').classList.add("hidden");
+    document.getElementById('noPlan').classList.remove('hidden');
   }
 
   vm.createPlan = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.remove('hidden')
     document.getElementById('exercises').classList.add("hidden");
+    document.getElementById('noPlan').classList.add('hidden');
+    document.getElementById('planTemplate').classList.add('hidden');
   }
   vm.getExercises = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.remove("hidden");
+    document.getElementById('noPlan').classList.remove('hidden');
+    document.getElementById('planTemplate').classList.add('hidden');
   }
-
+  $scope.$on('selectPlan', function(event ,data){
+    $scope.$broadcast('selectPlanNav', data)
+  })
+  $scope.$on('selectedPlanNav', function(event, data){
+    $scope.$broadcast('selectedPlan', data)
+    vm.gohome()
+  })
+  $scope.$on('createPlan', function(event, data){
+    $route.reload()
+  })
   vm.logout = function(info, path){
     var update = $http.delete('/login')
     update.then(function(data){
