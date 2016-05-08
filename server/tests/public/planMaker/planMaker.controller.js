@@ -402,7 +402,6 @@ function planMaker($http, $location, $scope, userService, exerciseService, $uibM
     $scope.$broadcast('showSubmit')
   }
   $scope.open = function (type) {
-    console.log(type);
     if(type == 'reviewPlan'){
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,

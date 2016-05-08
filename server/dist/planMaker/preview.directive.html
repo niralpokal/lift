@@ -4,11 +4,11 @@
       <h3 class="panel-title text-center">Your Current Plan</h3>
     </div>
     <div class="panel-body">
-      <div id="previewPlan" class="row col-md-12 text-center">
+      <div id="previewPlan" class="row col-sm-12 col-md-12 text-center">
         <h3 ng-if="planName"><span editable-text="planName" e-form="planNameBtn">{{planName}}</span> <button class="btn btn-default" ng-click="planNameBtn.$show()" ng-hide="planNameBtn.$visible">Edit</button></h3>
         <h4 ng-if="planLength"><small><span editable-number="planLength" e-min=0 e-form="planLengthBtn">{{planLength}}</span> weeks long</small> <button class="btn btn-default" ng-click="planLengthBtn.$show()" ng-hide="planLengthBtn.$visible">Edit</button></h4>
         <div class="row">
-          <form class="col-md-3" editable-form name="editableDay1" onaftersave="saveDay(day1)" ng-if="day1">
+          <form class="col-sm-3 col-md-3" editable-form name="editableDay1" onaftersave="saveDay(day1)" ng-if="day1">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay1.$show()" ng-show="!editableDay1.$visible">Edit</button>
               <span ng-show="editableDay1.$visible">
@@ -37,8 +37,9 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay1.$visible" ng-click="planMaker.day1.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
-          <form class="col-md-3" editable-form name="editableDay2" onaftersave="saveDay(day2)" ng-if="day2">
+          <form class="col-sm-3 col-md-3" editable-form name="editableDay2" onaftersave="saveDay(day2)" ng-if="day2">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay2.$show()" ng-show="!editableDay2.$visible">Edit</button>
               <span ng-show="editableDay2.$visible">
@@ -68,7 +69,7 @@
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay2.$visible" ng-click="planMaker.day2.prototype.addWorkout()">Add Workout</button>
             </div>
           </form>
-          <form class="col-md-3" editable-form name="editableDay3" onaftersave="saveDay(day3)" ng-if="day3">
+          <form class="col-md-3 col-sm-3" editable-form name="editableDay3" onaftersave="saveDay(day3)" ng-if="day3">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay3.$show()" ng-show="!editableDay3.$visible">Edit</button>
               <span ng-show="editableDay3.$visible">
@@ -96,8 +97,9 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay3.$visible" ng-click="planMaker.day3.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
-          <form class="col-md-3" editable-form name="editableDay4" onaftersave="saveDay(day4)" ng-if="day4">
+          <form class="col-md-3 col-sm-3" editable-form name="editableDay4" onaftersave="saveDay(day4)" ng-if="day4">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay4.$show()" ng-show="!editableDay4.$visible">Edit</button>
               <span ng-show="editableDay4.$visible">
@@ -125,10 +127,11 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay4.$visible" ng-click="planMaker.day4.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
         </div>
         <div class="row">
-          <form class="col-md-4 clearfix" editable-form name="editableDay5" onaftersave="saveDay(day5)" ng-if="day5">
+          <form class="col-md-4 col-sm-4 clearfix" editable-form name="editableDay5" onaftersave="saveDay(day5)" ng-if="day5">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay5.$show()" ng-show="!editableDay5.$visible">Edit</button>
               <span ng-show="editableDay5.$visible">
@@ -156,8 +159,9 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay5.$visible" ng-click="planMaker.day5.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
-          <form class="col-md-4" editable-form name="editableDay6" onaftersave="saveDay(day6)" ng-if="day6">
+          <form class="col-md-4 col-sm-4" editable-form name="editableDay6" onaftersave="saveDay(day6)" ng-if="day6">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay6.$show()" ng-show="!editableDay6.$visible">Edit</button>
               <span ng-show="editableDay6.$visible">
@@ -185,8 +189,9 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay6.$visible" ng-click="planMaker.day6.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
-          <form class="col-md-4" editable-form name="editableDay7" onaftersave="saveDay(day7)" ng-if="day7">
+          <form class="col-md-4 col-sm-4" editable-form name="editableDay7" onaftersave="saveDay(day7)" ng-if="day7">
             <div class="buttons">
               <button type="button" class="btn btn-default" ng-click="editableDay7.$show()" ng-show="!editableDay7.$visible">Edit</button>
               <span ng-show="editableDay7.$visible">
@@ -214,6 +219,7 @@
             <div class="text-center">
               <button type="button" class="btn btn-small btn-success" name="addWorkout" ng-show="editableDay7.$visible" ng-click="planMaker.day7.prototype.addWorkout()">Add Workout</button>
             </div>
+            <br>
           </form>
         </div>
         <br />

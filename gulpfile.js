@@ -37,7 +37,7 @@ gulp.task('copyScripts', function(){
 gulp.task('flattenBower',['copyScripts'], function(){
   gulp.src('bower_components/**/*.min.js')
   .pipe(flatten())
-  .pipe(gulp.dest('public/scripts'));
+  .pipe(gulp.dest('server/dist/scripts'));
 })
 
 gulp.task('copyPublic',['flattenBower'], function(){
