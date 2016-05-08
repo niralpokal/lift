@@ -212,8 +212,8 @@ app.get('/plan', function(req, res) {
 });
 
 app.put('/plan', jsonParser,  function(req, res) {
-  var plan = {weeks: req.body}
-  var id ={creator:ObjectID(req.cookies.id)}
+  var plan = {weeks: req.body.weeks}
+  var id ={_id:ObjectID(req.body.id)}
   MongoClient.connect(url, function(err, db){
     if(err){
       res.sendStatus(503);

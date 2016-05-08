@@ -8,6 +8,7 @@ var port = server.address().port;
 var request = request.defaults({jar:true});
 var id ='';
 var plan = {};
+var planid;
 
 describe('Lets test login routes', function(){
   it('I am making a new user', function(done){
@@ -72,7 +73,7 @@ describe('Lets test login routes', function(){
     request({
       method: 'POST',
       url:'http://localhost:'+ port+ '/plan',
-      json: {name: 'testPlan', planLength:12, day1:{
+      json: {planName: 'testPlan', planLength:12, day1:{
         rest: false,
         exercises:{
           id:"",
@@ -148,7 +149,7 @@ describe('Lets test login routes', function(){
       }
     })
   })
-  it('i am geting a plan', function(done){
+  it('I am geting a plan', function(done){
     this.timeout(5000)
     request({
       method: 'GET',
@@ -157,6 +158,7 @@ describe('Lets test login routes', function(){
       if(!err && response.statusCode==200){
         assert.isAtLeast(body.length, 1, 'we found something');
         plan = JSON.parse(body);
+        id = plan._id
         done();
       }else if(err){
         throw(err);
@@ -168,7 +170,7 @@ describe('Lets test login routes', function(){
     request({
       method: 'PUT',
       url: 'http://localhost:'+ port+ '/plan',
-      json: {planLength:12}
+      json: {id:id, weeks:12}
     },function(err, response, body){
       if(!err && response.statusCode==200){
         done();

@@ -9,6 +9,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
     if(result.data.length > 1){
       $scope.$emit('selectPlan', result.data)
       vm.plan = result.data[result.data.length-1];
+      vm.plan_id = result.data[result.data.length-1]._id
       vm.plan.days = [{
         name:'Day 1',
         string: 'day1'
@@ -111,6 +112,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       })
     }else {
       vm.plan = result.data[0];
+      vm.plan_id = result.data[0]._id
       vm.plan.days = [{
         name:'Day 1',
         string: 'day1'
@@ -290,7 +292,10 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         break;
       }
     }
-    payload = vm.plan.weeks
+    payload ={
+      id: vm.plan_id,
+      weeks:vm.plan.weeks
+    }
     var update =  planService.updatePlan(payload)
     update.then(function(result){
     })
