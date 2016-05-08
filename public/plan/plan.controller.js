@@ -7,6 +7,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
   var getPlan = planService.getPlan();
   getPlan.then(function(result){
     if(result.data.length > 1){
+      vm.noPlan = false
       $scope.$emit('selectPlan', result.data)
       vm.plan = result.data[result.data.length-1];
       vm.plan_id = result.data[result.data.length-1]._id
@@ -110,7 +111,10 @@ function plan($location, $scope, userService, exerciseService, planService, exer
           }
         }
       })
-    }else {
+      }else if(result.data[0] == undefined){
+        vm.noPlan = true
+      } else {
+      vm.noPlan = false
       vm.plan = result.data[0];
       vm.plan_id = result.data[0]._id
       vm.plan.days = [{

@@ -94,7 +94,11 @@ function signup($http, $location, $scope, $uibModalInstance){
       }else{
         if(vm.error == false && vm.error1 == false){
           document.getElementById('signup.age').classList.remove('has-error')
-          info.metric = vm.select.name
+          if(vm.select == undefined){
+            info.metric = 'lbs'
+          }else{
+            info.metric = vm.select.name
+          }
           var update = $http.post('/user',info)
           update.then(function(){
             $uibModalInstance.close();
