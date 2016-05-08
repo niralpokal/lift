@@ -17,6 +17,29 @@ function signup($http, $location, $scope, $uibModalInstance){
     vm.select = val
   }
   vm.selected = {value:vm.user.metricChoices[0]}
+  vm.checkUser = function(val){
+    $scope.loadingNames = true
+    $http.get('/username/' + val).then(function(response){
+      $scope.loadingNames = false
+      $scope.noResults = true;
+      $scope.nameResults = false;
+      document.getElementById('signup.userName').classList.add('has-success')
+      document.getElementById('signup.userName').classList.remove('has-error')
+      response.data.map(function(item){
+        if(item){
+          vm.check = item.username
+          $scope.noResults = false;
+          $scope.nameResults = true;
+          document.getElementById('signup.userName').classList.add('has-error')
+        }
+        if($scope.user.username == vm.check){
+          $scope.noResults = false;
+          $scope.nameResults = true;
+          document.getElementById('signup.userName').classList.add('has-error')
+        }
+      })
+    })
+  }
   vm.signup = function(info, path){
     if(info == undefined){
       vm.error = true;

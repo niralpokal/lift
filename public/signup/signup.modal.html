@@ -15,7 +15,14 @@
       </div>
       <div class="form-group" id="signup.userName">
         <label for="name">Username:</label>
-        <input type="text" class="form-control" ng-model="user.username"name="username" placeholder="Username" required>
+        <input type="text" class="form-control" ng-model="user.username"name="username" placeholder="Username" ng-keyup="signup.checkUser(user.username)"   class="form-control">
+        <i ng-show="loadingNames" class="glyphicon glyphicon-refresh"></i>
+        <div ng-show="noResults">
+          <i class="glyphicon glyphicon-ok"></i> Username is availible!
+        </div>
+        <div ng-show="nameResults">
+          <i class="glyphicon glyphicon-remove"></i> Username is un-availible!
+        </div>
       </div>
       <div class="form-group" id="signup.password">
         <label for="pass">Password:</label>

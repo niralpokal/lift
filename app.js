@@ -281,6 +281,28 @@ app.get('/exercise/:id/', function(req, res) {
   })
 });
 
+app.get('/username/:id', function(req, res) {
+  var x = req.params.id
+  var user = {
+    username:x
+  }
+  MongoClient.connect(url, function(err, db){
+    if(err){
+      res.sendStatus(503);
+    }else{
+      db.collection('users').find(user).toArray(function(err, docs){
+        if(err){
+          res.sendStatus(404);
+          db.close();
+        }else{
+          res.send(docs);
+          db.close();
+        }
+      })
+    }
+  })
+});
+
 if(!require.main.loaded){
   var port = process.env.PORT || 8080;
   app.listen(port, function(){});
