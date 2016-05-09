@@ -17,21 +17,18 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('planTemplate').classList.remove('hidden');
     document.getElementById('exercises').classList.add("hidden");
     document.getElementById('noPlan').classList.remove('hidden');
+    document.getElementById('addToPlan').classList.add("hidden");
   }
 
   vm.createPlan = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.remove('hidden')
     document.getElementById('exercises').classList.add("hidden");
-    document.getElementById('noPlan').classList.add('hidden');
-    document.getElementById('planTemplate').classList.add('hidden');
   }
   vm.getExercises = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.remove("hidden");
-    document.getElementById('noPlan').classList.remove('hidden');
-    document.getElementById('planTemplate').classList.add('hidden');
   }
   $scope.$on('selectPlan', function(event ,data){
     $scope.$broadcast('selectPlanNav', data)
