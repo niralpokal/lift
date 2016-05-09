@@ -151,6 +151,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day1
       } else{
         vm.selectedDay = vm.selectedWeek.day1
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day1.date)
       }
       if(vm.selectedWeek.day1.date == 0){
         vm.selectedDay.date = null
@@ -291,10 +292,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       id: vm.plan_id,
       weeks:vm.plan.weeks
     }
-    console.log(payload.weeks);
-    /*var update =  planService.updatePlan(payload)
+    var update =  planService.updatePlan(payload)
     update.then(function(result){
-    })*/
+    })
   }
   vm.open = function(data){
     var service = exerciseService.getExercise(data);
