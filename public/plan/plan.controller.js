@@ -152,6 +152,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       } else{
         vm.selectedDay = vm.selectedWeek.day1
       }
+      if(vm.selectedWeek.day1.date == 0){
+        vm.selectedDay.date = null
+      }
     }else if(string == 'day2'){
       if(vm.selectedWeek.day2.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day2)
@@ -161,6 +164,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day2
       } else{
         vm.selectedDay = vm.selectedWeek.day2
+      }
+      if(vm.selectedWeek.day2.date == 0){
+        vm.selectedDay.date = null
       }
     }else if(string == 'day3'){
       if(vm.selectedWeek.day3.exercises == undefined){
@@ -172,6 +178,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       } else{
         vm.selectedDay = vm.selectedWeek.day3
       }
+      if(vm.selectedWeek.day3.date == 0){
+        vm.selectedDay.date = null
+      }
     }else if(string == 'day4'){
       if(vm.selectedWeek.day4.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day4)
@@ -182,15 +191,21 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       } else{
         vm.selectedDay = vm.selectedWeek.day4
       }
+      if(vm.selectedWeek.day4.date == 0){
+        vm.selectedDay.date = null
+      }
     }else if(string == 'day5'){
       if(vm.selectedWeek.day5.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day5)
         var temp2 = makeSets(temp, vm.selectedWeek.id);
         vm.selectedWeek.day5 = $.extend(true,{}, temp2)
         vm.selectedWeek.day5.day = 'Day 5'
-        vm.selectedDay = vm.selectedWeeks.day5
+        vm.selectedDay = vm.selectedWeek.day5
       } else{
         vm.selectedDay = vm.selectedWeek.day5
+      }
+      if(vm.selectedWeek.day5.date == 0){
+        vm.selectedDay.date = null
       }
     }else if(string == 'day6'){
       if(vm.selectedWeek.day6.exercises == undefined){
@@ -202,6 +217,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       } else{
         vm.selectedDay = vm.selectedWeek.day6
       }
+      if(vm.selectedWeek.day6.date == 0){
+        vm.selectedDay.date = null
+      }
     }else if(string == 'day7'){
       if(vm.selectedWeek.day7.exercises == undefined){
         var temp = $.extend(true,{}, vm.plan.day7)
@@ -211,6 +229,9 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day7
       } else{
         vm.selectedDay = vm.selectedWeek.day7
+      }
+      if(vm.selectedWeek.day7.date == 0){
+        vm.selectedDay.date = null
       }
     }
   }
@@ -249,6 +270,15 @@ function plan($location, $scope, userService, exerciseService, planService, exer
     }
     data.push(set)
   }
+  vm.date = function(date){
+    vm.selectedDay.date = date;
+  }
+  vm.DateOpen = function() {
+    vm.datePopup.opened = true;
+  };
+  vm.datePopup = {
+    opened: false
+  }
   vm.save = function(){
     var payload;
     for(var i = 0; i<vm.plan.weeks.length; i++){
@@ -261,9 +291,10 @@ function plan($location, $scope, userService, exerciseService, planService, exer
       id: vm.plan_id,
       weeks:vm.plan.weeks
     }
-    var update =  planService.updatePlan(payload)
+    console.log(payload.weeks);
+    /*var update =  planService.updatePlan(payload)
     update.then(function(result){
-    })
+    })*/
   }
   vm.open = function(data){
     var service = exerciseService.getExercise(data);

@@ -5,6 +5,7 @@
 <hr>
 <div class="row-fluid clearfix" ng-if="plan.selectedDay">
   <selectedday></selectedday>
+  <date></date>
   <br>
   <div class="panel panel-default" ng-repeat="x in plan.selectedDay.exercises">
     <div class="panel-body clearfix" >
@@ -18,7 +19,6 @@
         </div>
       </div>
       <div class="col-md-7 col-sm-7">
-        <date></date>
         <br>
         <table class="table table-bordered table-hover table-condensed">
           <tr class="table-class">
