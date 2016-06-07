@@ -34,7 +34,7 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.add("hidden");
-    document.getElementById('calculator').classList.remove("hidden")
+    document.getElementById('bmi').classList.remove("hidden")
   }
   $scope.$on('selectPlan', function(event ,data){
     $scope.$broadcast('selectPlanNav', data)
