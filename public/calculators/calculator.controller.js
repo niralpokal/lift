@@ -10,13 +10,13 @@ function calculator($scope){
     var solution = (weight/(height*height)) * 703;
     var round = solution.toFixed(2);
     if(round < 18.50){
-      vm.cat = "Underweight"
+      vm.bmiCategory = "Underweight"
     } else if(round < 24.90){
-      vm.cat = "Normal Weight"
+      vm.bmiCategory = "Normal Weight"
     } else if (round < 29.90){
-      vm.cat = "Overweight"
+      vm.bmiCategory = "Overweight"
     }else{
-      vm.cat = "Obesity"
+      vm.bmiCategory  = "Obesity"
     }
     vm.bmi = round
   }
