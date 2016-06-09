@@ -30,11 +30,11 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.remove("hidden");
   }
-  vm.getCalculators = function(){
+  vm.getCalculators = function(string){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.add("hidden");
-    document.getElementById('bmi').classList.remove("hidden")
+    document.getElementById(string).classList.remove("hidden")
   }
   $scope.$on('selectPlan', function(event ,data){
     $scope.$broadcast('selectPlanNav', data)
