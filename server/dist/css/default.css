@@ -58,4 +58,7 @@ body { padding-top: 50px; }
   .margin {
     margin-top: 5px;
   }
+  .hideText {
+    display: none;
+  }
 }
