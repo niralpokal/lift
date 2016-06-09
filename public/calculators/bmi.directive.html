@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="row" ng-if="calculator.bmi">
-      <div class="col-xs-offset-4 col-xs-4">
+      <div class="col-xs-offset-2 col-xs-4">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class='panel-title'>Your Results</h3>
@@ -38,6 +38,47 @@
               Your are in the {{calculator.bmiCategory}} category.
             </p>
           </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class='panel-title'>BMI Categories</h3>
+          </div>
+            <table class="table">
+              <tr>
+                <td>
+                  Underweight
+                </td>
+                <td>
+                  <18.5
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Normal Weight
+                </td>
+                <td>
+                  18.5 - 24.9
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Overweight
+                </td>
+                <td>
+                  25 - 29.9
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Obesity
+                </td>
+                <td>
+                  30 or greater
+                </td>
+              </tr>
+            </table>
         </div>
       </div>
     </div>
