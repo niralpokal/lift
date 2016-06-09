@@ -20,4 +20,14 @@ function calculator($scope){
     }
     vm.bmi = round
   }
+  vm.compute1RM = function(data){
+    var weight = data.weight;
+    var reps = data.reps;
+    var max = (weight/((37/36)-((1/36)*reps)))
+    var max2 = weight*(1 + (reps/30))
+    var max3 = (weight*reps*.033)+weight
+    console.log(max);
+    console.log(max2);
+    console.log(max3);
+  }
 }
