@@ -165,6 +165,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day2
       } else{
         vm.selectedDay = vm.selectedWeek.day2
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day2.date)
       }
       if(vm.selectedWeek.day2.date == 0){
         vm.selectedDay.date = null
@@ -178,6 +179,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day3
       } else{
         vm.selectedDay = vm.selectedWeek.day3
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day3.date)
       }
       if(vm.selectedWeek.day3.date == 0){
         vm.selectedDay.date = null
@@ -191,6 +193,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day4
       } else{
         vm.selectedDay = vm.selectedWeek.day4
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day4.date)
       }
       if(vm.selectedWeek.day4.date == 0){
         vm.selectedDay.date = null
@@ -204,6 +207,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day5
       } else{
         vm.selectedDay = vm.selectedWeek.day5
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day5.date)
       }
       if(vm.selectedWeek.day5.date == 0){
         vm.selectedDay.date = null
@@ -217,6 +221,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day6
       } else{
         vm.selectedDay = vm.selectedWeek.day6
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day6.date)
       }
       if(vm.selectedWeek.day6.date == 0){
         vm.selectedDay.date = null
@@ -230,6 +235,7 @@ function plan($location, $scope, userService, exerciseService, planService, exer
         vm.selectedDay = vm.selectedWeek.day7
       } else{
         vm.selectedDay = vm.selectedWeek.day7
+        vm.selectedDay.date = Date.parse(vm.selectedWeek.day7.date)
       }
       if(vm.selectedWeek.day7.date == 0){
         vm.selectedDay.date = null

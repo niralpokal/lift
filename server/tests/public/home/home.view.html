@@ -13,6 +13,11 @@
      <ul class="nav navbar-nav">
        <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.gohome()">Home</a></li>
        <li ng-class="getClass('/home/')"><a href="#/home/" ng-click="home.getExercises()">Exercises</a></li>
+       <li uib-dropdown>
+         <a href="#" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calculators<span class="caret"></span></a>
+         <ul uib-dropdown-menu>
+           <li><a ng-click="home.getCalculators('bmi')">BMI Calculator</a></li>
+         </ul>
        <li uib-dropdown ng-show="plans">
           <a href="#" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Switch Plans<span class="caret"></span></a>
           <ul uib-dropdown-menu>
@@ -20,7 +25,7 @@
           </ul>
         </li>
      </ul>
-     <p class="navbar-text">{{home.welcomemessage}} {{home.user.firstName}}</p>
+     <p class="navbar-text hide"><small>{{home.welcomemessage}} {{home.user.firstName}}</small></p>
      <ul class="nav navbar-nav navbar-right">
        <logout></logout>
      </ul>
@@ -31,4 +36,5 @@
   <plan></plan>
   <planmaker></planmaker>
   <exercises></exercises>
+  <bmi></bmi>
 </div>

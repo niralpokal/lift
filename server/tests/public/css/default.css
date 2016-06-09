@@ -50,10 +50,15 @@
 .red {
   color: red;
 }
-
+.margin1 {
+  margin-top: 5px;
+}
 body { padding-top: 50px; }
 @media screen and (max-width: 991px){
   .margin {
     margin-top: 5px;
+  }
+  .hide {
+    display: none;
   }
 }
