@@ -18,20 +18,24 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('exercises').classList.add("hidden");
     document.getElementById('noPlan').classList.remove('hidden');
     document.getElementById('addToPlan').classList.add("hidden");
+    document.getElementById('bmi').classList.add('hidden')
   }
 
   vm.createPlan = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.remove('hidden')
     document.getElementById('exercises').classList.add("hidden");
+    document.getElementById('bmi').classList.add('hidden')
   }
   vm.getExercises = function(){
     document.getElementById('userPlan').classList.add("hidden");
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.remove("hidden");
+    document.getElementById('bmi').classList.add('hidden')
   }
   vm.getCalculators = function(string){
     document.getElementById('userPlan').classList.add("hidden");
+    document.getElementById('bmi').classList.add('hidden')
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.add("hidden");
     document.getElementById(string).classList.remove("hidden")
