@@ -44,5 +44,8 @@ function calculator($scope){
     var five = ((end*5)* .35)/5
     var three = ((end*5)* .34)/3
     var two = ((end*5)* .3175)/2
+    vm.five = Math.round(five/10)*10
+    vm.three = Math.round(three/10)*10
+    vm.two = Math.round(two/10)*10
   }
 }
