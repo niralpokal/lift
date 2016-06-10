@@ -32,6 +32,10 @@ function calculator($scope){
     vm.eighty = (max3*.80).toFixed(0)
     vm.seventyFive = (max3*.75).toFixed(0)
     vm.seventy = (max3*.70).toFixed(0)
+    vm.sixtyFive = (max3*.65).toFixed(0)
+    vm.sixty = (max3*.60).toFixed(0)
+    vm.fiftyFive = (max3*.55).toFixed(0)
+    vm.fifty = (max3*.50).toFixed(0)
     vm.max = max3.toFixed(0)
   }
 }
