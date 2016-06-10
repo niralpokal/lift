@@ -38,4 +38,14 @@ function calculator($scope){
     vm.fifty = (max3*.50).toFixed(0)
     vm.max = max3.toFixed(0)
   }
+  vm.computeWarmup = function(data){
+    var start = data.start
+    var end = data.end
+    var five = ((end*5)* .35)/5
+    var three = ((end*5)* .34)/3
+    var two = ((end*5)* .3175)/2
+    console.log(five);
+    console.log(three);
+    console.log(two);
+  }
 }

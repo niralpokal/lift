@@ -7,14 +7,14 @@
           <form class="form-inline">
             <div class="form-group">
               <label for="start"> Starting Weight: </label>
-              <input type="number" class="form-control" name="start" value="45" ng-model="user.start">
+              <input type="number" class="form-control" name="start" placeholder="45" ng-model="user.start">
             </div>
             <div class="form-group margin1">
               <label for="end">Working Weight: </label>
-              <input type="number" class="form-control"name="end" value="" ng-model="user.end">
+              <input type="number" class="form-control"name="end" ng-model="user.end">
             </div>
           </form>
-          <button type="button" class="btn btn-defualt margin1">Calculate Warmup</button>
+          <button type="button" class="btn btn-defualt margin1" ng-click="calculator.computeWarmup(user)">Calculate Warmup</button>
         </div>
       </div>
     </div>
