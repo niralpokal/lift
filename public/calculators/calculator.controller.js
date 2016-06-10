@@ -47,5 +47,6 @@ function calculator($scope){
     vm.five = Math.round(five/10)*10
     vm.three = Math.round(three/10)*10
     vm.two = Math.round(two/10)*10
+    vm.end = end
   }
 }

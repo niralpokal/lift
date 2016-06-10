@@ -7,23 +7,33 @@
           <form class="form-inline">
             <div class="form-group">
               <label for="start"> Starting Weight: </label>
-              <input type="number" class="form-control" name="start" placeholder="45" ng-model="user.start">
+              <div class="input-group">
+                <input type="number" class="form-control" name="start" placeholder="45" ng-model="user.start" disabled>
+                <div class="input-group-addon">
+                  lbs.
+                </div>
+              </div>
             </div>
             <div class="form-group margin1">
               <label for="end">Working Weight: </label>
-              <input type="number" class="form-control"name="end" ng-model="user.end">
+              <div class="input-group">
+                <input type="number" class="form-control"name="end" ng-model="user.end">
+                <div class="input-group-addon">
+                  lbs.
+                </div>
+              </div>
             </div>
           </form>
           <button type="button" class="btn btn-defualt margin1" ng-click="calculator.computeWarmup(user)">Calculate Warmup</button>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" ng-if="calculator.two">
       <div class="col-xs-offset-3 col-xs-6">
         <div class="panel panel-defualt">
           <div class="panel-heading">
             <div class="panel-title">
-              <h3>Your warmup sets are</h3>
+              <h3>Your Results</h3>
             </div>
           </div>
           <table class="table">
@@ -31,7 +41,7 @@
               <th class="text-center">
                 Sets
               </th>
-              <th>
+              <th class="text-center">
                 Weight
               </th>
             </tr>
