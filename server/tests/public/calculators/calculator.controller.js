@@ -26,8 +26,12 @@ function calculator($scope){
     var max = (weight/((37/36)-((1/36)*reps)))
     var max2 = weight*(1 + (reps/30))
     var max3 = (weight*reps*.033)+weight
-    console.log(max);
-    console.log(max2);
-    console.log(max3);
+    vm.ninetyFive = (max3*.95)
+    vm.ninety = (max3*.90)
+    vm.eightyFive = (max3*.85)
+    vm.eighty = (max3*.80)
+    vm.seventyFive = (max3*.75)
+    vm.seventy = (max3*.70)
+    vm.max = max3
   }
 }
