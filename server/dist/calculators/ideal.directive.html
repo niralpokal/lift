@@ -1,3 +1,40 @@
 <div class="row hidden" id="ideal" ng-controller="calculatorController as calculator">
-  
+  <div class="container">
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+          <h3>Ideal Bodyweight Calculator</h3>
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="number" class="form-control" name="feet" ng-model=user.feet>
+                <div class="input-group-addon">
+                  ft.
+                </div>
+              </div>
+            </div>
+            <div class="form-group margin1">
+              <div class="input-group">
+                <input type="number" class="form-control" name="in" ng-model=user.inch>
+                <div class="input-group-addon">
+                  in.
+                </div>
+              </div>
+            </div>
+            <div class="form-group margin1">
+              <select class="form-control" ng-model="user.option">
+                <option selected>
+                  Male
+                </option>
+                <option>
+                  Female
+                </option>
+              </select>
+            </div>
+          </form>
+          <button class="btn btn-default margin1">Compute Ideal Bodyweight</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
