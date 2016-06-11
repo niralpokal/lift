@@ -18,7 +18,8 @@
          <ul uib-dropdown-menu>
            <li><a ng-click="home.getCalculators('bmi')">BMI Calculator</a></li>
            <li><a ng-click="home.getCalculators('1rm')">1 RM Calculator</a></li>
-            <li><a ng-click="home.getCalculators('warmup')">Warmup Calculator</a></li>
+           <li><a ng-click="home.getCalculators('warmup')">Warmup Calculator</a></li>
+           <li><a ng-click="home.getCalculators('ideal')">Ideal Bodyweight Calculator</a></li>
          </ul>
        <li uib-dropdown ng-show="plans">
           <a href="#" uib-dropdown-toggle data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Switch Plans<span class="caret"></span></a>
@@ -41,4 +42,5 @@
   <bmi></bmi>
   <onerm></onerm>
   <warmup></warmup>
+  <ideal></ideal>
 </div>

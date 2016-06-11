@@ -18,6 +18,7 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('bmi').classList.add('hidden')
     document.getElementById('1rm').classList.add('hidden')
     document.getElementById('warmup').classList.add('hidden')
+    document.getElementById('ideal').classList.add('hidden')
     document.getElementById('userPlan').classList.remove("hidden");
     document.getElementById('planTemplate').classList.remove('hidden');
     document.getElementById('noPlan').classList.remove('hidden');
@@ -28,6 +29,7 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('exercises').classList.add("hidden");
     document.getElementById('bmi').classList.add('hidden')
     document.getElementById('1rm').classList.add('hidden')
+    document.getElementById('ideal').classList.add('hidden')
     document.getElementById('warmup').classList.add('hidden')
     document.getElementById('planMaker').classList.remove('hidden')
   }
@@ -36,6 +38,7 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('bmi').classList.add('hidden')
     document.getElementById('1rm').classList.add('hidden')
+    document.getElementById('ideal').classList.add('hidden')
     document.getElementById('warmup').classList.add('hidden')
     document.getElementById('exercises').classList.remove("hidden");
   }
@@ -44,6 +47,7 @@ function home($http, userService, $location, $route, $window, $scope){
     document.getElementById('bmi').classList.add('hidden')
     document.getElementById('1rm').classList.add('hidden')
     document.getElementById('warmup').classList.add('hidden')
+    document.getElementById('ideal').classList.add('hidden')
     document.getElementById('planMaker').classList.add("hidden");
     document.getElementById('exercises').classList.add("hidden");
     document.getElementById(string).classList.remove("hidden")
