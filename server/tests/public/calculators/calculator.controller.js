@@ -51,6 +51,7 @@ function calculator($scope){
   }
   vm.computeIdeal = function(data){
     if(data.option == 'Male'){
+      vm.female = false;
       var height = ((data.feet *12)+ data.inch)*2.54
       var base = (height -100)*2.2;
       var fivePercent = (73*.055)+base
@@ -63,6 +64,23 @@ function calculator($scope){
       vm.tenPercent = Math.round(tenPercent);
       vm.twelvePercent = Math.round(twelvePercent);
       vm.fifteenPercent = Math.round(fifteenPercent);
+      vm.male=true;
+    }
+    else if(data.option == 'Female'){
+      vm.male =false
+      var height = ((data.feet *12)+ data.inch)*2.54
+      var base = (height- 119)*2.2
+      var twelvePercent = (217*.12)+base
+      var fifteenPercent = (213*.15)+ base
+      var eighteenPercent = (206*.18) +base
+      var twentyOnePercent = (204.7*.21)+ base
+      var twentyFourPercent = (204.17*.24)+ base
+      vm.twelvePercent = Math.round(twelvePercent)
+      vm.fifteenPercent = Math.round(fifteenPercent)
+      vm.eighteenPercent = Math.round(eighteenPercent)
+      vm.twentyOnePercent = Math.round(twentyOnePercent)
+      vm.twentyFourPercent = Math.round(twentyFourPercent)
+      vm.female = true;
     }
   }
 }
