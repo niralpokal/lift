@@ -21,18 +21,12 @@
                 </div>
               </div>
             </div>
-            <div class="form-group margin1">
-              <select class="form-control" ng-model="user.option">
-                <option selected>
-                  Male
-                </option>
-                <option>
-                  Female
-                </option>
-              </select>
-            </div>
+            <select class="form-control margin1" ng-model="user.option">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </form>
-          <button class="btn btn-default margin1">Compute Ideal Bodyweight</button>
+          <button class="btn btn-default margin1" ng-click="calculator.computeIdeal(user)">Compute Ideal Bodyweight</button>
         </div>
       </div>
     </div>
