@@ -58,8 +58,11 @@ function calculator($scope){
       var tenPercent = (140*.10)+ base
       var twelvePercent = (150*.12)+ base
       var fifteenPercent = (167*.15)+base
-      console.log(base, fivePercent, eightPercent, tenPercent, twelvePercent, fifteenPercent);
+      vm.fivePercent = Math.round(fivePercent);
+      vm.eightPercent = Math.round(eightPercent);
+      vm.tenPercent = Math.round(tenPercent);
+      vm.twelvePercent = Math.round(twelvePercent);
+      vm.fifteenPercent = Math.round(fifteenPercent);
     }
-    console.log(data);
   }
 }
