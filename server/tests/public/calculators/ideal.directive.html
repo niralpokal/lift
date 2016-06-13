@@ -32,11 +32,63 @@
     </div>
     <div class="row">
       <div class="col-xs-offset-3 col-xs-6" ng-if="calculator.male">
-        {{calculator.fivePercent}}
-        {{calculator.eightPercent}}
-        {{calculator.tenPercent}}
-        {{calculator.twelvePercent}}
-        {{calculator.fifteenPercent}}
+        <div class="panel pannel-default">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <h3>The ideal bodyweight for your height is</h3>
+            </div>
+          </div>
+          <table class="table">
+            <tr>
+              <th>
+                Body Fat Percentage
+              </th>
+              <th>
+                Weight(lbs.)
+              </th>
+            </tr>
+            <tr>
+              <td>
+                5.5%
+              </td>
+              <td>
+                {{calculator.fivePercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                8%
+              </td>
+              <td>
+                {{calculator.eightPercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                10%
+              </td>
+              <td>
+                {{calculator.tenPercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                12%
+              </td>
+              <td>
+                {{calculator.twelvePercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                15%
+              </td>
+              <td>
+                {{calculator.fifteenPercent}}
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
       <div class="col-xs-offset-3 col-xs-6" ng-if="calculator.female">
         {{calculator.twelvePercent}}
