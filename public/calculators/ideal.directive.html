@@ -35,7 +35,7 @@
         <div class="panel pannel-default">
           <div class="panel-heading">
             <div class="panel-title">
-              <h3>The ideal bodyweight for your height is</h3>
+              <h3>The ideal bodyweight</h3>
             </div>
           </div>
           <table class="table">
@@ -44,7 +44,7 @@
                 Body Fat Percentage
               </th>
               <th class="text-center">
-                Weight(lbs.)
+                Bodyweight (lbs.)
               </th>
             </tr>
             <tr>
@@ -91,11 +91,63 @@
         </div>
       </div>
       <div class="col-xs-offset-3 col-xs-6" ng-if="calculator.female">
-        {{calculator.twelvePercent}}
-        {{calculator.fifteenPercent}}
-        {{calculator.eighteenPercent}}
-        {{calculator.twentyOnePercent}}
-        {{calculator.twentyFourPercent}}
+        <div class="panel panel-body">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <h3>Your Ideal Bodyweight is</h3>
+            </div>
+          </div>
+          <table class="table">
+            <tr>
+              <th class="text-center">
+                Body Fat Percentage
+              </th>
+              <th class="text-center">
+                Bodyweight (lbs.)
+              </th>
+            </tr>
+            <tr>
+              <td>
+                12%
+              </td>
+              <td>
+                {{calculator.twelvePercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                15%
+              </td>
+              <td>
+                {{calculator.fifteenPercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                18%
+              </td>
+              <td>
+                {{calculator.eighteenPercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                21%
+              </td>
+              <td>
+                {{calculator.twentyOnePercent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                24%
+              </td>
+              <td>
+                {{calculator.twentyFourPercent}}
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
