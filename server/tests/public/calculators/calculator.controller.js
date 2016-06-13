@@ -8,10 +8,8 @@ function calculator($scope){
     option: {}
   };
   $scope.options = [
-    { type: 'Male'
-    },
-    { type:'Female'
-    }
+    {type: 'Male'},
+    {type:'Female'}
   ]
   $scope.user.option = $scope.options[0]
   vm.computeBmi = function(data){
@@ -60,7 +58,6 @@ function calculator($scope){
     vm.end = end
   }
   vm.computeIdeal = function(data){
-    console.log(data);
     if(data.option.type == 'Male'){
       vm.female = false;
       var height = ((data.feet *12)+ data.inch)*2.54

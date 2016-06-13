@@ -8,10 +8,8 @@ function calculator($scope){
     option: {}
   };
   $scope.options = [
-    { type: 'Male'
-    },
-    { type:'Female'
-    }
+    {type: 'Male'},
+    {type:'Female'}
   ]
   $scope.user.option = $scope.options[0]
   vm.computeBmi = function(data){
