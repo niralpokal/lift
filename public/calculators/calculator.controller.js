@@ -4,6 +4,16 @@ app.$inject = ['$scope'];
 
 function calculator($scope){
   var vm = this;
+  $scope.user = {
+    option: {}
+  };
+  $scope.options = [
+    { type: 'Male'
+    },
+    { type:'Female'
+    }
+  ]
+  $scope.user.option = $scope.options[0]
   vm.computeBmi = function(data){
     var height = data.height;
     var weight = data.weight;
@@ -50,7 +60,8 @@ function calculator($scope){
     vm.end = end
   }
   vm.computeIdeal = function(data){
-    if(data.option == 'Male'){
+    console.log(data);
+    if(data.option.type == 'Male'){
       vm.female = false;
       var height = ((data.feet *12)+ data.inch)*2.54
       var base = (height -100)*2.2;
@@ -66,7 +77,7 @@ function calculator($scope){
       vm.fifteenPercent = Math.round(fifteenPercent);
       vm.male=true;
     }
-    else if(data.option == 'Female'){
+    else if(data.option.type == 'Female'){
       vm.male =false
       var height = ((data.feet *12)+ data.inch)*2.54
       var base = (height- 119)*2.2

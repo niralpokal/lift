@@ -21,9 +21,8 @@
                 </div>
               </div>
             </div>
-            <select class="form-control margin1" ng-model="user.option">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+            <select class="form-control margin1"  ng-options="options.type for options in options"
+            ng-model="user.option">
             </select>
           </form>
           <button class="btn btn-default margin1" ng-click="calculator.computeIdeal(user)">Compute Ideal Bodyweight</button>
@@ -44,7 +43,7 @@
                 Body Fat Percentage
               </th>
               <th class="text-center">
-                Weight(lbs.)
+                Bodyweight (lbs.)
               </th>
             </tr>
             <tr>
@@ -103,7 +102,7 @@
                 Body Fat Percentage
               </th>
               <th class="text-center">
-                Bodyweight(lbs.)
+                Bodyweight (lbs.)
               </th>
             </tr>
             <tr>
@@ -147,7 +146,7 @@
               </td>
             </tr>
           </table>
-        </div> 
+        </div>
       </div>
     </div>
   </div>
